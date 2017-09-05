@@ -1,65 +1,46 @@
 package org.justjsf.proxibanque.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 
 @Entity
+@Table (name="CUSTOMER")
 @NamedQueries({ @NamedQuery(name = "customers.findAll", query = "select o from Customer o"), })
-public class Customer {
+public class Customer extends Person {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private static final long serialVersionUID = 7078730324493569314L;
 	
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String postalCode;
+
+	private String adress;
+	private String zipCode;
 	private String city;
-	private String telephone;
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
+	private String phone;
+	@ManyToOne
+	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
+	private Advisor advisor;
+
+	public Customer() {
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getAdress() {
+		return adress;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public String getCity() {
@@ -70,13 +51,21 @@ public class Customer {
 		this.city = city;
 	}
 
-	public String getTelephone() {
-		return telephone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	
+
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
 
 }

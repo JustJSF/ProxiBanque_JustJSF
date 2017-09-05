@@ -35,22 +35,22 @@
 					<p:column style="width:30px">
             <p:rowToggler />
         </p:column>
+					<p:column headerText="#{labels['model.person.id']}"
+						sortBy="#{object.id}" filterBy="#{object.id}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.id}" />
+					</p:column>
 
-					<p:column headerText="#{labels['customer.firstName']}"
+					<p:column headerText="#{labels['model.person.name']}"
+						sortBy="#{object.name}" filterBy="#{object.name}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.name}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.firstName']}"
 						sortBy="#{object.firstName}" filterBy="#{object.firstName}"
 						filterMatchMode="contains">
 						<h:outputText value="#{object.firstName}" />
-					</p:column>
-
-					<p:column headerText="#{labels['customer.lastName']}"
-						sortBy="#{object.firstName}" filterBy="#{object.lastName}"
-						filterMatchMode="contains">
-						<h:outputText value="#{object.lastName}" />
-					</p:column>
-					<p:column headerText="#{labels['customer.telephone']}"
-						sortBy="#{object.telephone}" filterBy="#{object.telephone}"
-						filterMatchMode="contains">
-						<h:outputText value="#{object.telephone}" />
 					</p:column>
 
 					<p:column headerText="Delete" style="width:8%">
@@ -75,52 +75,15 @@
             <p:panelGrid columns="2" columnClasses="value"
 							style="width:300px">
 
-							<h:outputText value="#{labels['customer.firstName']}"
-								for="firstName" style="padding-left: 30px; padding-right: 30px;" />
+							<h:outputText value="#{labels['model.person.id']}" />
+							<h:outputText value="#{object.id}" />
 
-							<p:inputText id="firstName"
-								value="#{customerController.bean.firstName}" required="true"
-								label="#{labels['customer.firstName']}"
-								requiredMessage="Required" />
+							<h:outputText value="#{labels['model.person.name']}" />
+							<h:outputText value="#{object.name}" />
 
-							<h:outputText value="#{labels['customer.lastName']}"
-								for="lastName" style="padding-left: 30px; padding-right: 30px;" />
+							<h:outputText value="#{labels['model.person.firstName']}" />
+							<h:outputText value="#{object.firstName}" />
 
-							<p:inputText id="lastName"
-								value="#{customerController.bean.lastName}" required="true"
-								label="#{labels['customer.lastName']}"
-								requiredMessage="Required" />
-
-							<h:outputText value="#{labels['customer.address']}" for="address"
-								style="padding-left: 30px; padding-right: 30px;" />
-
-							<p:inputText id="address"
-								value="#{customerController.bean.address}" required="true"
-								label="#{labels['customer.address']}" requiredMessage="Required" />
-
-							<h:outputText value="#{labels['customer.postalCode']}"
-								for="postalCode"
-								style="padding-left: 30px; padding-right: 30px;" />
-
-							<p:inputText id="postalCode"
-								value="#{customerController.bean.postalCode}" required="true"
-								label="#{labels['customer.postalCode']}"
-								requiredMessage="Required" />
-
-							<h:outputText value="#{labels['customer.city']}" for="city"
-								style="padding-left: 30px; padding-right: 30px;" />
-
-							<p:inputText id="city" value="#{customerController.bean.city}"
-								required="true" label="#{labels['customer.city']}"
-								requiredMessage="Required" />
-
-							<h:outputText value="#{labels['customer.telephone']}"
-								for="telephone" style="padding-left: 30px; padding-right: 30px;" />
-
-							<p:inputText id="telephone"
-								value="#{customerController.bean.telephone}" required="true"
-								label="#{labels['customer.telephone']}"
-								requiredMessage="Required" />
 						</p:panelGrid>
 					</p:rowExpansion>
 				</p:dataTable>
@@ -150,40 +113,42 @@
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
 
+						<!-- Champ Nom -->
+						<h:outputText value="#{labels['model.person.name']}"
+							style="padding-left: 30px; padding-right: 30px;" />
 
-						<h:outputText value="#{labels['customer.firstName']}"
+						<p:inputText value="#{customerController.beanSelected.name}" />
+
+						<!-- Champ Prénom -->
+						<h:outputText value="#{labels['model.person.firstName']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText value="#{customerController.beanSelected.firstName}" />
 
-
-						<h:outputText value="#{labels['customer.lastName']}"
+						<!-- Champ Adresse -->
+						<h:outputText value="#{labels['model.customer.adress']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.lastName}" />
+						<p:inputText value="#{customerController.beanSelected.adress}" />
 
-
-						<h:outputText value="#{labels['customer.address']}"
+						<!-- Champ code postal -->
+						<h:outputText value="#{labels['model.customer.zipCode']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.address}" />
+						<p:inputText value="#{customerController.beanSelected.zipCode}" />
 
-
-						<h:outputText value="#{labels['customer.postalCode']}"
-							style="padding-left: 30px; padding-right: 30px;" />
-
-						<p:inputText value="#{customerController.beanSelected.postalCode}" />
-
-
-						<h:outputText value="#{labels['customer.city']}"
+						<!-- Champ ville -->
+						<h:outputText value="#{labels['model.customer.city']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText value="#{customerController.beanSelected.city}" />
 
-						<h:outputText value="#{labels['customer.telephone']}"
+						<!-- Champ telephone -->
+						<h:outputText value="#{labels['model.customer.phone']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.telephone}" />
+						<p:inputText value="#{customerController.beanSelected.phone}" />
+
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
@@ -193,8 +158,8 @@
 							update=":form1:objects, :form1:messages"
 							actionListener="#{customerController.update}"
 							oncomplete="PF('detailsDlg').hide()" />
-						<p:commandButton value="#{labels['action.cancel']}" onclick="PF('detailsDlg').hide()"
-							type="button" />
+						<p:commandButton value="#{labels['action.cancel']}"
+							onclick="PF('detailsDlg').hide()" type="button" />
 					</p:outputPanel>
 
 				</p:dialog>
