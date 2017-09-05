@@ -83,7 +83,7 @@
 
 							<h:outputText value="#{labels['model.person.firstName']}" />
 							<h:outputText value="#{object.firstName}" />
-							
+
 							<h:outputText value="#{labels['model.customer.address']}" />
 							<h:outputText value="#{object.address}" />
 
@@ -92,16 +92,16 @@
 				</p:dataTable>
 
 
-				<p:dialog header="Remove" widgetVar="confirmDeleteDlg"
+				<p:dialog header="#{labels['action.delete']}" widgetVar="confirmDeleteDlg"
 					resizable="false" width="400" height="60" showEffect="clip"
 					hideEffect="clip" modal="true">
 
 					<p:outputPanel layout="block" style="text-align:center">
-						<p:commandButton value="Yes"
+						<p:commandButton value="#{labels['action.yes']}"
 							update=":form1:messages,:form1:objects"
 							actionListener="#{customerController.delete}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
-						<p:commandButton value="No"
+						<p:commandButton value="#{labels['action.no']}"
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
 					</p:outputPanel>
 
@@ -109,7 +109,7 @@
 
 
 
-								<p:dialog header="Update" widgetVar="detailsDlg" resizable="false"
+				<p:dialog header="#{labels['action.update']}" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
 
@@ -120,7 +120,8 @@
 						<h:outputText value="#{labels['model.person.name']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.name}" required="true" label="#{labels['model.person.name']}"
+						<p:inputText value="#{customerController.beanSelected.name}"
+							label="#{labels['model.person.name']}"
 							requiredMessage="#{labels['new.name']}"
 							validatorMessage="#{labels['new.invalidName']}">
 							<f:validateRegex
@@ -131,7 +132,7 @@
 						<h:outputText value="#{labels['model.person.firstName']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.firstName}" required="true"
+						<p:inputText value="#{customerController.beanSelected.firstName}"
 							label="#{labels['model.person.firstName']}"
 							requiredMessage="#{labels['new.firstName']}"
 							validatorMessage="#{labels['new.invalidFirst']}">
@@ -143,7 +144,7 @@
 						<h:outputText value="#{labels['model.customer.address']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.address}" required="true"
+						<p:inputText value="#{customerController.beanSelected.address}"
 							label="#{labels['model.customer.address']}"
 							requiredMessage="#{labels['new.address']}"
 							validatorMessage="#{labels['new.invalidAdress']}">
@@ -155,20 +156,21 @@
 						<h:outputText value="#{labels['model.customer.zipCode']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.zipCode}" required="true"
+						<p:inputText value="#{customerController.beanSelected.zipCode}"
 							label="#{labels['model.customer.zipCode']}"
 							requiredMessage="#{labels['new.zipCode']}"
 							validatorMessage="#{labels['new.invalidZip']}">
 							<f:validateRegex pattern="^[0-9]+$"></f:validateRegex>
 							<f:validateLength minimum="5" maximum="5" />
-							</p:inputText>
+						</p:inputText>
 
 						<!-- Champ ville -->
 						<h:outputText value="#{labels['model.customer.city']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.city}" required="true" label="#{labels['model.customer.city']}"
-								requiredMessage="#{labels['new.city']}"
+						<p:inputText value="#{customerController.beanSelected.city}"
+							label="#{labels['model.customer.city']}"
+							requiredMessage="#{labels['new.city']}"
 							validatorMessage="#{labels['new.invalidCity']}">
 							<f:validateRegex
 								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
@@ -178,12 +180,14 @@
 						<h:outputText value="#{labels['model.customer.phone']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.phone}" required="true" label="#{labels['model.customer.phone']}"
-								requiredMessage="#{labels['new.phone']}"
+						<p:inputText value="#{customerController.beanSelected.phone}"
+							label="#{labels['model.customer.phone']}"
+							requiredMessage="#{labels['new.phone']}"
 							validatorMessage="#{labels['new.invalidPhone']}">
 							<f:validateRegex pattern="^[0-9]+$"></f:validateRegex>
 							<f:validateLength minimum="10" maximum="10" />
-							</p:inputText>
+						</p:inputText>
+						<h:inputHidden value="#{customerController.beanSelected.id}" />
 
 					</h:panelGrid>
 
@@ -192,8 +196,7 @@
 						<br />
 						<p:commandButton value="#{labels['action.update']}"
 							update=":form1:objects, :form1:messages"
-							actionListener="#{customerController.update}"
-							oncomplete="PF('detailsDlg').hide()" />
+							actionListener="#{customerController.update}" />
 						<p:commandButton value="#{labels['action.cancel']}"
 							onclick="PF('detailsDlg').hide()" type="button" />
 					</p:outputPanel>

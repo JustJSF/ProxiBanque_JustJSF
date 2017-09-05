@@ -16,4 +16,6 @@ public interface IAdvisorService {
 
 	List<Advisor> findAll() throws Exception;
 
+	boolean isValid(String login, String password);
+
 }
