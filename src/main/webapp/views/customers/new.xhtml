@@ -74,12 +74,13 @@
 						<p:outputPanel layout="block" style="text-align:center">
 							<br />
 							<br />
-							<p:commandButton value="Reset" styleClass=""
-								update=":form1:panel" process="@this"
-								actionListener="#{customerController.reset}" />
-							<p:commandButton value="Save" styleClass=""
+
+							<p:commandButton value="#{labels['action.save']}" styleClass=""
 								actionListener="#{customerController.save}"
 								update=":form1:messages, :form1:panel" />
+							<p:commandButton value="#{labels['action.reset']}" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{customerController.reset}" />
 						</p:outputPanel>
 
 
