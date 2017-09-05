@@ -16,7 +16,7 @@ public class Customer extends Person {
 	private static final long serialVersionUID = 7078730324493569314L;
 	
 
-	private String adress;
+	private String address;
 	private String zipCode;
 	private String city;
 	private String phone;
@@ -27,12 +27,12 @@ public class Customer extends Person {
 	public Customer() {
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 
 	public String getZipCode() {

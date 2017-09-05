@@ -83,6 +83,9 @@
 
 							<h:outputText value="#{labels['model.person.firstName']}" />
 							<h:outputText value="#{object.firstName}" />
+							
+							<h:outputText value="#{labels['model.customer.address']}" />
+							<h:outputText value="#{object.address}" />
 
 						</p:panelGrid>
 					</p:rowExpansion>
@@ -126,10 +129,10 @@
 						<p:inputText value="#{customerController.beanSelected.firstName}" />
 
 						<!-- Champ Adresse -->
-						<h:outputText value="#{labels['model.customer.adress']}"
+						<h:outputText value="#{labels['model.customer.address']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.adress}" />
+						<p:inputText value="#{customerController.beanSelected.address}" />
 
 						<!-- Champ code postal -->
 						<h:outputText value="#{labels['model.customer.zipCode']}"
