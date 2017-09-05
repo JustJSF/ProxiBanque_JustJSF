@@ -35,18 +35,21 @@
 					<p:column style="width:30px">
             <p:rowToggler />
         </p:column>
-					<p:column headerText="#{labels['model.person.id']}" sortBy="#{object.id}"
-						filterBy="#{object.id}" filterMatchMode="contains">
+					<p:column headerText="#{labels['model.person.id']}"
+						sortBy="#{object.id}" filterBy="#{object.id}"
+						filterMatchMode="contains">
 						<h:outputText value="#{object.id}" />
 					</p:column>
 
-					<p:column headerText="#{labels['model.person.name']}" sortBy="#{object.name}"
-						filterBy="#{object.name}" filterMatchMode="contains">
+					<p:column headerText="#{labels['model.person.name']}"
+						sortBy="#{object.name}" filterBy="#{object.name}"
+						filterMatchMode="contains">
 						<h:outputText value="#{object.name}" />
 					</p:column>
 
-					<p:column headerText="#{labels['model.person.firstName']}" sortBy="#{object.firstName}"
-						filterBy="#{object.firstName}" filterMatchMode="contains">
+					<p:column headerText="#{labels['model.person.firstName']}"
+						sortBy="#{object.firstName}" filterBy="#{object.firstName}"
+						filterMatchMode="contains">
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
 
@@ -109,11 +112,41 @@
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
 
-
+						<!-- Champ Nom -->
 						<h:outputText value="#{labels['model.person.name']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText value="#{customerController.beanSelected.name}" />
+
+						<!-- Champ Prénom -->
+						<h:outputText value="#{labels['model.person.firstName']}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerController.beanSelected.firstName}" />
+
+						<!-- Champ Adresse -->
+						<h:outputText value="#{labels['model.customer.adress']}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerController.beanSelected.adress}" />
+						
+						<!-- Champ code postal -->
+						<h:outputText value="#{labels['model.customer.zipCode']}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerController.beanSelected.zipCode}" />
+						
+						<!-- Champ ville -->
+						<h:outputText value="#{labels['model.customer.city']}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerController.beanSelected.city}" />
+						
+						<!-- Champ telephone -->
+						<h:outputText value="#{labels['model.customer.phone']}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerController.beanSelected.phone}" />
 
 					</h:panelGrid>
 
