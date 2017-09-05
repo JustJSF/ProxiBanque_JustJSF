@@ -3,6 +3,7 @@ package org.justjsf.proxibanque.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,6 +20,7 @@ public class Advisor extends Person {
 
 	private static final long serialVersionUID = -2672470972167529913L;
 
+	@Column(unique=true)
 	private String login;
 	private String password;
 	@OneToMany(mappedBy = "advisor")
