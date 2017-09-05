@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
+		<ui:define name="content">
+
+
+
+			<h:form id="form1" style="">
+				<p:growl id="messages" showDetail="true" />
+
+
+				<p:panel id="panel">
+					<br />
+
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+						<!-- Champ Nom -->
+						<h:outputText value="#{labels['model.person.name']}" for="name"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="name" value="#{advisorController.bean.name}"
+							required="true" label="#{labels['model.person.name']}"
+							requiredMessage="Required" />
+
+						<!-- Champ Prénom -->
+						<h:outputText value="#{labels['model.person.firstName']}"
+							for="firstName" style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="firstName"
+							value="#{advisorController.bean.firstName}" required="true"
+							label="#{labels['model.person.firstName']}"
+							requiredMessage="Required" />
+
+						<!-- Champ login -->
+						<h:outputText value="#{labels['model.advisor.login']}" for="login"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="login" value="#{advisorController.bean.login}"
+							required="true" label="#{labels['model.advisor.login']}"
+							requiredMessage="Required" />
+
+						<!-- Champ mot de passe -->
+						<h:outputText value="#{labels['model.advisor.password']}"
+							for="password" style="padding-left: 30px; padding-right: 30px;" />
+
+						<h:inputSecret id="password"
+							value="#{advisorController.bean.password}" required="true"
+							label="#{labels['model.advisor.password']}"
+							requiredMessage="Required" />
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+
+							<p:commandButton value="#{labels['action.save']}" styleClass=""
+								actionListener="#{advisorController.save}"
+								update=":form1:messages, :form1:panel" />
+							<p:commandButton value="#{labels['action.reset']}" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{advisorController.reset}" />
+						</p:outputPanel>
+
+
+
+					</h:panelGrid>
+
+				</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
