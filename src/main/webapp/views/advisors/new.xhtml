@@ -27,7 +27,11 @@
 
 						<p:inputText id="name" value="#{advisorController.bean.name}"
 							required="true" label="#{labels['model.person.name']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.name']}"
+							validatorMessage="#{labels['new.invalidName']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
 						<!-- Champ Prénom -->
 						<h:outputText value="#{labels['model.person.firstName']}"
@@ -36,7 +40,11 @@
 						<p:inputText id="firstName"
 							value="#{advisorController.bean.firstName}" required="true"
 							label="#{labels['model.person.firstName']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.firstName']}"
+							validatorMessage="#{labels['new.invalidFirst']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
 						<!-- Champ login -->
 						<h:outputText value="#{labels['model.advisor.login']}" for="login"
