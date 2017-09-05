@@ -23,6 +23,7 @@ public class Advisor extends Person {
 	@Column(unique=true)
 	private String login;
 	private String password;
+	private Role role;
 	@OneToMany(mappedBy = "advisor")
 	private Set<Customer> customers = new HashSet<>();
 
@@ -52,5 +53,17 @@ public class Advisor extends Person {
 	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
 	}
+	
+    public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public enum Role {
+        DIRECTOR, ADVISOR
+    }
 
 }
