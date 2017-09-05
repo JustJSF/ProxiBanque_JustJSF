@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="2.5">
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>afternoon</param-value>
+		<param-value>pepper-grinder</param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
