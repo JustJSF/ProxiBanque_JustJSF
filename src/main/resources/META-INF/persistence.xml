@@ -6,8 +6,6 @@
 
 	<persistence-unit name="persistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-
-		<class>org.formation.model.Item</class>
 		<class>org.justjsf.proxibanque.model.Customer</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
