@@ -6,12 +6,11 @@
 
 	<persistence-unit name="persistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-
 		<class>org.justjsf.proxibanque.model.Customer</class>
 		<class>org.justjsf.proxibanque.model.Advisor</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>
 

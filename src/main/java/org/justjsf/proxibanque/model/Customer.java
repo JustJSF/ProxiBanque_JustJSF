@@ -7,7 +7,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table (name="CUSTOMER")
@@ -16,6 +15,7 @@ public class Customer extends Person {
 
 	private static final long serialVersionUID = 7078730324493569314L;
 	
+
 	private String adress;
 	private String zipCode;
 	private String city;
@@ -66,5 +66,6 @@ public class Customer extends Person {
 	public void setAdvisor(Advisor advisor) {
 		this.advisor = advisor;
 	}
+
 
 }
