@@ -29,7 +29,11 @@
 
 						<p:inputText id="name" value="#{customerController.bean.name}"
 							required="true" label="#{labels['model.person.name']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.name']}"
+							validatorMessage="#{labels['new.invalidName']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
 						<!-- Champ Prénom -->
 						<h:outputText value="#{labels['model.person.firstName']}"
@@ -38,7 +42,11 @@
 						<p:inputText id="firstName"
 							value="#{customerController.bean.firstName}" required="true"
 							label="#{labels['model.person.firstName']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.firstName']}"
+							validatorMessage="#{labels['new.invalidFirst']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
 						<!-- Champ adresse -->
 						<h:outputText value="#{labels['model.customer.address']}"
@@ -47,7 +55,11 @@
 						<p:inputText id="adress"
 							value="#{customerController.bean.address}" required="true"
 							label="#{labels['model.customer.address']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.address']}"
+							validatorMessage="#{labels['new.invalidAdress']}">
+							<f:validateRegex
+								pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
 						<!-- Champ code postal -->
 						<h:outputText value="#{labels['model.customer.zipCode']}"
@@ -56,40 +68,47 @@
 						<p:inputText id="zipCode"
 							value="#{customerController.bean.zipCode}" required="true"
 							label="#{labels['model.customer.zipCode']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.zipCode']}"
+							validatorMessage="#{labels['new.invalidZip']}">
+							<f:validateRegex pattern="^[0-9]+$"></f:validateRegex>
+							<f:validateLength minimum="5" maximum="5" />
+							</p:inputText>
 
-						<!-- Champ ville -->
-						<h:outputText value="#{labels['model.customer.city']}"
-							for="city" style="padding-left: 30px; padding-right: 30px;" />
+							<!-- Champ ville -->
+							<h:outputText value="#{labels['model.customer.city']}" for="city"
+								style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText id="city"
-							value="#{customerController.bean.city}" required="true"
-							label="#{labels['model.customer.city']}"
-							requiredMessage="Required" />
+							<p:inputText id="city" value="#{customerController.bean.city}"
+								required="true" label="#{labels['model.customer.city']}"
+								requiredMessage="#{labels['new.city']}"
+							validatorMessage="#{labels['new.invalidCity']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
 
-						<!-- Champ telephone -->
-						<h:outputText value="#{labels['model.customer.phone']}"
-							for="phone" style="padding-left: 30px; padding-right: 30px;" />
+							<!-- Champ telephone -->
+							<h:outputText value="#{labels['model.customer.phone']}"
+								for="phone" style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText id="phone"
-							value="#{customerController.bean.phone}" required="true"
-							label="#{labels['model.customer.phone']}"
-							requiredMessage="Required" />
+							<p:inputText id="phone" value="#{customerController.bean.phone}"
+								required="true" label="#{labels['model.customer.phone']}"
+								requiredMessage="#{labels['new.phone']}"
+							validatorMessage="#{labels['new.invalidPhone']}">
+							<f:validateRegex pattern="^[0-9]+$"></f:validateRegex>
+							<f:validateLength minimum="10" maximum="10" />
+							</p:inputText>
 
-						<p:outputPanel layout="block" style="text-align:center">
-							<br />
-							<br />
+							<p:outputPanel layout="block" style="text-align:center">
+								<br />
+								<br />
 
-							<p:commandButton value="#{labels['action.save']}" styleClass=""
-								actionListener="#{customerController.save}"
-								update=":form1:messages, :form1:panel" />
-							<p:commandButton value="#{labels['action.reset']}" styleClass=""
-								update=":form1:panel" process="@this"
-								actionListener="#{customerController.reset}" />
-						</p:outputPanel>
-
-
-
+								<p:commandButton value="#{labels['action.save']}" styleClass=""
+									actionListener="#{customerController.save}"
+									update=":form1:messages, :form1:panel" />
+								<p:commandButton value="#{labels['action.reset']}" styleClass=""
+									update=":form1:panel" process="@this"
+									actionListener="#{customerController.reset}" />
+							</p:outputPanel>
 					</h:panelGrid>
 
 				</p:panel>
