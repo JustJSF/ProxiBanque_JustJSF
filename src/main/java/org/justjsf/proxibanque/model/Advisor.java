@@ -3,6 +3,7 @@ package org.justjsf.proxibanque.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,8 +20,10 @@ public class Advisor extends Person {
 
 	private static final long serialVersionUID = -2672470972167529913L;
 
+	@Column(unique=true)
 	private String login;
 	private String password;
+	private Role role;
 	@OneToMany(mappedBy = "advisor")
 	private Set<Customer> customers = new HashSet<>();
 
@@ -50,5 +53,17 @@ public class Advisor extends Person {
 	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
 	}
+	
+    public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public enum Role {
+        DIRECTOR, ADVISOR
+    }
 
 }

@@ -5,6 +5,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -23,6 +24,12 @@ public class Customer extends Person {
 	@ManyToOne
 	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
 	private Advisor advisor;
+	@OneToOne
+	@JoinColumn(name="CHECKING_ACCOUNT_ID", referencedColumnName = "id")
+	private CheckingAccount checkingAccount;
+	@OneToOne
+	@JoinColumn(name="SAVING_ACCOUNT_ID", referencedColumnName = "id")
+	private SavingAccount savingAccount;
 
 	public Customer() {
 	}
@@ -67,5 +74,20 @@ public class Customer extends Person {
 		this.advisor = advisor;
 	}
 
+	public CheckingAccount getCheckingAccount() {
+		return checkingAccount;
+	}
+
+	public void setCheckingAccount(CheckingAccount checkingAccount) {
+		this.checkingAccount = checkingAccount;
+	}
+
+	public SavingAccount getSavingAccount() {
+		return savingAccount;
+	}
+
+	public void setSavingAccount(SavingAccount savingAccount) {
+		this.savingAccount = savingAccount;
+	}
 
 }
