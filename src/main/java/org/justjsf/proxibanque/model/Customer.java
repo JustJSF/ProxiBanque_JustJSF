@@ -1,38 +1,20 @@
 package org.justjsf.proxibanque.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table (name="customer")
 @NamedQueries({ @NamedQuery(name = "customers.findAll", query = "select o from Customer o"), })
-public class Customer {
+public class Customer extends Person implements Serializable{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	// TODO A supprimer
-	private String test;
+	private static final long serialVersionUID = 7078730324493569314L;
 
-	public String getTest() {
-		return test;
+	public Customer() {
 	}
-
-	public void setTest(String test) {
-		this.test = test;
-	}
-
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 
 }

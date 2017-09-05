@@ -35,9 +35,19 @@
 					<p:column style="width:30px">
             <p:rowToggler />
         </p:column>
-					<p:column headerText="Test" sortBy="#{object.test}"
-						filterBy="#{object.test}" filterMatchMode="contains">
-						<h:outputText value="#{object.test}" />
+					<p:column headerText="#{labels['model.person.id']}" sortBy="#{object.id}"
+						filterBy="#{object.id}" filterMatchMode="contains">
+						<h:outputText value="#{object.id}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.name']}" sortBy="#{object.name}"
+						filterBy="#{object.name}" filterMatchMode="contains">
+						<h:outputText value="#{object.name}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.firstName']}" sortBy="#{object.firstName}"
+						filterBy="#{object.firstName}" filterMatchMode="contains">
+						<h:outputText value="#{object.firstName}" />
 					</p:column>
 
 					<p:column headerText="Delete" style="width:8%">
@@ -61,8 +71,15 @@
 					<p:rowExpansion>
             <p:panelGrid columns="2" columnClasses="value"
 							style="width:300px">
-							<h:outputText value="Test" />
-							<h:outputText value="#{object.test}" />
+							<h:outputText value="#{labels['model.person.id']}" />
+							<h:outputText value="#{object.id}" />
+
+							<h:outputText value="#{labels['model.person.name']}" />
+							<h:outputText value="#{object.name}" />
+
+							<h:outputText value="#{labels['model.person.firstName']}" />
+							<h:outputText value="#{object.firstName}" />
+
 						</p:panelGrid>
 					</p:rowExpansion>
 				</p:dataTable>
@@ -93,10 +110,10 @@
 						style="margin:0 auto;">
 
 
-						<h:outputText value="Test"
+						<h:outputText value="#{labels['model.person.name']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{customerController.beanSelected.test}" />
+						<p:inputText value="#{customerController.beanSelected.name}" />
 
 					</h:panelGrid>
 
