@@ -15,10 +15,42 @@
 			<div class="well well-lg">
 			
 					
-				<p:fieldset legend="#{labels['home.login']}" toggleable="false" toggleSpeed="500">
-					<center>
-					<img width="70"  src ="" />
-					</center>	
+				<p:fieldset legend="#{labels['home.signin']}" toggleable="false" toggleSpeed="500">
+					<ui:define name="content">
+			<center>
+				<p:panelGrid columns="2" styleClass="outerpanelgrid">
+					<p:panel header="Authentification conseiller" style="width: 350;" >
+						<h:form>
+
+							<h:panelGrid columns="2" cellpadding="2">
+								<h:outputLabel for="#{advisorController.login}" value="#{labels['home.login']}" />
+								<h:inputText value="#{advisorController.login}" label="#{labels['home.login']}"></h:inputText>
+								<h:outputLabel for="#{advisorController.password}" value="#{labels['home.password']}" />
+								<h:inputSecret value="#{advisorController.password}"></h:inputSecret>
+
+<!-- 								<h:commandButton type="submit" value="Connexion" -->
+<!-- 									action="#{conseillerBean.login1}"></h:commandButton> -->
+<!-- 							</h:panelGrid> -->
+<!-- 						</h:form> -->
+<!-- 					</p:panel> -->
+<!-- 					<p:panel header="Authentification gérant" style="width: 350;"> -->
+<!-- 						<h:form> -->
+
+<!-- 							<h:panelGrid columns="2" cellpadding="2"> -->
+<!-- 								<h:outputLabel for="#{gerantBean.login}" value="Identifiant " /> -->
+<!-- 								<h:inputText value="#{gerantBean.login}" label="login"></h:inputText> -->
+<!-- 								<h:outputLabel for="#{gerantBean.password}" value="Mot de passe " /> -->
+<!-- 								<h:inputSecret value="#{gerantBean.password}"></h:inputSecret> -->
+
+<!-- 								<h:commandButton type="submit" value="Connexion" -->
+<!-- 									action="#{gerantBean.login1}"></h:commandButton> -->
+							</h:panelGrid>
+						</h:form>
+					</p:panel>
+				</p:panelGrid>
+
+			</center>
+		</ui:define>	
 				</p:fieldset>
 			</div>
 
