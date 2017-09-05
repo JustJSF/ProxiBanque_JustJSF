@@ -35,12 +35,6 @@
 					<p:column style="width:30px">
             <p:rowToggler />
         </p:column>
-					<p:column headerText="#{labels['model.person.id']}"
-						sortBy="#{object.id}" filterBy="#{object.id}"
-						filterMatchMode="contains">
-						<h:outputText value="#{object.id}" />
-					</p:column>
-
 					<p:column headerText="#{labels['model.person.name']}"
 						sortBy="#{object.name}" filterBy="#{object.name}"
 						filterMatchMode="contains">
@@ -52,20 +46,33 @@
 						filterMatchMode="contains">
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
+					
+					<p:column headerText="#{labels['model.advisor.login']}"
+						sortBy="#{object.login}" filterBy="#{object.login}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.login}" />
+					</p:column>
+					
+					<p:column headerText="#{labels['model.advisor.password']}"
+						sortBy="#{object.password}" filterBy="#{object.password}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.password}" />
+					</p:column>
+					
 
-					<p:column headerText="Delete" style="width:8%">
+					<p:column headerText="#{labels['action.delete']}" style="width:8%">
 						<p:commandLink update=":form1:display"
 							oncomplete="PF('confirmDeleteDlg').show()"
-							image="ui-icon ui-icon-close" title="Delete">
+							image="ui-icon ui-icon-close" title="#{labels['action.delete']}">
 							<f:setPropertyActionListener value="#{object}"
 								target="#{advisorController.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
 						</p:commandLink>
 					</p:column>
-					<p:column headerText="Details" style="width:8%">
+					<p:column headerText="#{labels['action.details']}" style="width:8%">
 						<p:commandLink update=":form1:display"
 							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search" title="Details">
+							image="ui-icon ui-icon-search" title="#{labels['action.details']}">
 							<f:setPropertyActionListener value="#{object}"
 								target="#{advisorController.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-search" />
@@ -74,9 +81,6 @@
 					<p:rowExpansion>
             <p:panelGrid columns="2" columnClasses="value"
 							style="width:300px">
-
-							<h:outputText value="#{labels['model.person.id']}" />
-							<h:outputText value="#{object.id}" />
 
 							<h:outputText value="#{labels['model.person.name']}" />
 							<h:outputText value="#{object.name}" />
@@ -88,23 +92,23 @@
 				</p:dataTable>
 
 
-				<p:dialog header="Remove" widgetVar="confirmDeleteDlg"
+				<p:dialog header="#{labels['action.delete']}" widgetVar="confirmDeleteDlg"
 					resizable="false" width="400" height="60" showEffect="clip"
 					hideEffect="clip" modal="true">
 
 					<p:outputPanel layout="block" style="text-align:center">
-						<p:commandButton value="Yes"
+						<p:commandButton value="#{labels['action.yes']}"
 							update=":form1:messages1,:form1:objects1"
 							actionListener="#{advisorController.delete}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
-						<p:commandButton value="No"
+						<p:commandButton value="#{labels['action.no']}"
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
 					</p:outputPanel>
 				</p:dialog>
 
 
 
-				<p:dialog header="Update" widgetVar="detailsDlg" resizable="false"
+				<p:dialog header="#{labels['action.update']}" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
 
@@ -115,7 +119,7 @@
 						<h:outputText value="#{labels['model.person.name']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{advisorController.beanSelected.name}" required="true" label="#{labels['model.person.name']}"
+						<p:inputText value="#{advisorController.beanSelected.name}" label="#{labels['model.person.name']}"
 							requiredMessage="#{labels['new.name']}"
 							validatorMessage="#{labels['new.invalidName']}">
 							<f:validateRegex
@@ -126,7 +130,7 @@
 						<h:outputText value="#{labels['model.person.firstName']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{advisorController.beanSelected.firstName}" required="true"
+						<p:inputText value="#{advisorController.beanSelected.firstName}"
 							label="#{labels['model.person.firstName']}"
 							requiredMessage="#{labels['new.firstName']}"
 							validatorMessage="#{labels['new.invalidFirst']}">
@@ -139,7 +143,8 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText value="#{advisorController.beanSelected.login}" />
-
+						
+						<h:inputHidden value="#{advisorController.beanSelected.id}"/>
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
@@ -147,8 +152,7 @@
 						<br />
 						<p:commandButton value="#{labels['action.update']}"
 							update=":form1:objects1, :form1:messages1"
-							actionListener="#{advisorController.update}"
-							oncomplete="PF('detailsDlg').hide()" />
+							actionListener="#{advisorController.update}"/>
 						<p:commandButton value="#{labels['action.cancel']}"
 							onclick="PF('detailsDlg').hide()" type="button" />
 					</p:outputPanel>

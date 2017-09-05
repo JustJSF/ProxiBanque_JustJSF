@@ -97,7 +97,7 @@ public class AdvisorController implements Serializable {
 	public void notificationSuccess(String operation) {
 		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation " + operation + " success");
 		FacesMessage msg = null;
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Success");
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Opération effectuée");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
