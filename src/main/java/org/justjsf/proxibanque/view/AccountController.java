@@ -1,6 +1,7 @@
 package org.justjsf.proxibanque.view;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -9,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
@@ -27,10 +29,13 @@ public class AccountController implements Serializable{
 
 	private Customer bean;
 	private Customer beanSelected;
+	private CheckingAccount checkingAccount;
+	private Double balance = 0.0D;
+	private LocalDateTime date;
+	private Double overdraft = -1000D;
 
 	@PostConstruct
 	public void init() {
-			
 	}
 
 
@@ -107,5 +112,60 @@ public class AccountController implements Serializable{
 	public void setBeanSelected(Customer beanSelected) {
 		this.beanSelected = beanSelected;
 	}
+
+
+	public CheckingAccount getCheckingAccount() {
+		return checkingAccount;
+	}
+
+
+	public void setCheckingAccount(CheckingAccount checkingAccount) {
+		this.checkingAccount = checkingAccount;
+	}
+
+
+	public Double getBalance() {
+		return balance;
+	}
+
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+
+
+	public Double getOverdraft() {
+		return overdraft;
+	}
+
+
+	public void setOverdraft(Double overdraft) {
+		this.overdraft = overdraft;
+	}
+	
+	public void setCheckingAccount() {
+		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
+			this.checkingAccount = new CheckingAccount();
+			this.checkingAccount.setBalance(this.balance);
+			this.checkingAccount.setOverdraft(this.overdraft);
+			this.checkingAccount.setDate(LocalDateTime.now());
+			this.beanSelected.setCheckingAccount(this.checkingAccount);
+			try {
+				service.merge(this.beanSelected);
+			} catch (Exception e) {
+				notificationError(e, "Add Checking Account error");
+			}
+		}
+}
 
 }
