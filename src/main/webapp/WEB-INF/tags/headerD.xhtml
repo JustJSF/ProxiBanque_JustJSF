@@ -52,17 +52,16 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		<h:form>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<p:commandButton value="#{labels['action.disconnect']}"
+						action="#{userController.logout}" />
 
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<p:button value="#{labels['action.disconnect']}"
-					href="#main?reverse=true" />
-
-			</ul>
-		</div>
-
-		<!-- /.container-fluid --> </nav>
+				</ul>
+			</div>
+		</h:form> <!-- /.container-fluid --> </nav>
 	</ui:composition>
 </body>
 </html>
