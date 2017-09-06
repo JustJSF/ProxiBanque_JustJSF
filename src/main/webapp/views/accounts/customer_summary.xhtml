@@ -60,28 +60,67 @@
 							value="#{accountController.beanSelected.checkingAccount.balance}" />
 						<h:outputText value="#{currency['symbol']}"></h:outputText>
 						<br />
+						<h:outputText value="#{labels['model.checkingaccount.overdraft']}" /> :
+					<h:outputText
+							value="#{accountController.beanSelected.checkingAccount.overdraft}" />
+						<h:outputText value="#{currency['symbol']}"></h:outputText>
+						<br />
+						
 					</c:if>
 					<c:if
 						test="#{empty accountController.beanSelected.checkingAccount}">
 						<br />
 
-
-						<!-- 						<p:commandButton action="#{accountController.setCheckingAccount}" -->
-						<!-- 							value="#{labels['account.checking.add']}" ajax="false" /> -->
-
-
-
 						<p:commandButton title="#{labels['account.checking.add']}"
 							oncomplete="PF('addCheckingAccountDlg').show()"
 							value="#{labels['account.checking.add']}">
 							<f:setPropertyActionListener value="#{object}"
-								target="#{accountController.beanSelected}" />
+								target="#{accountController.checkingAccount}" />
 						</p:commandButton>
 
 					</c:if>
 
-					<!-- 					Le pop-up de création de compte Courant  -->
+					<!-- Le pop-up de création de compte Courant  -->
+					<p:dialog header="#{labels['action.update']}"
+						widgetVar="addCheckingAccountDlg" resizable="false" width="750"
+						height="400" showEffect="clip" hideEffect="clip" modal="true">
 
+						<h:panelGrid id="display" columns="2" cellpadding="4"
+							style="margin:0 auto;">
+
+							<!-- Balance -->
+							<h:outputText value="#{labels['model.account.balance']}"
+								style="padding-left: 30px; padding-right: 30px;" />
+
+							<p:inputText value="#{accountController.balance}"
+								label="#{labels['model.account.balance']}"
+								validatorMessage="#{labels['new.invalidBalance']}">
+								<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
+							</p:inputText>
+
+							<!-- Balance -->
+							<h:outputText
+								value="#{labels['model.checkingaccount.overdraft']}"
+								style="padding-left: 30px; padding-right: 30px;" />
+
+							<p:inputText value="#{accountController.overdraft}"
+								label="#{labels['model.checkingaccount.overdraft']}"
+								validatorMessage="#{labels['new.invalidOverdraft']}">
+								<f:validateDoubleRange></f:validateDoubleRange>
+							</p:inputText>
+
+
+						</h:panelGrid>
+
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+							<p:commandButton action="#{accountController.setCheckingAccount}"
+								value="#{labels['action.validate']}" ajax="false" />
+							<p:commandButton value="#{labels['action.cancel']}"
+								onclick="PF('addCheckingAccountDlg').hide()" type="button" />
+						</p:outputPanel>
+					</p:dialog>
 				</p:panel>
 			</h:form>
 		</ui:define>

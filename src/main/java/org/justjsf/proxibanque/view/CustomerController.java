@@ -1,7 +1,6 @@
 package org.justjsf.proxibanque.view;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
@@ -150,20 +148,6 @@ public class CustomerController implements Serializable {
 
 	public void setListSelected(List<Customer> listSelected) {
 		this.listSelected = listSelected;
-	}
-
-	public void setCheckingAccount() {
-		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
-			CheckingAccount checkingAccount = new CheckingAccount();
-			checkingAccount.setBalance(0D);
-			checkingAccount.setDate(LocalDateTime.now());
-			this.beanSelected.setCheckingAccount(checkingAccount);
-			try {
-				service.merge(this.beanSelected);
-			} catch (Exception e) {
-				notificationError(e, "Add Checking Account error");
-			}
-		}
 	}
 
 }
