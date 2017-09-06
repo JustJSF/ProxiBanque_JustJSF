@@ -24,9 +24,7 @@ public class Account implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
 	private LocalDateTime date;
-	
 	private Double balance;
 
 	public Account() {
