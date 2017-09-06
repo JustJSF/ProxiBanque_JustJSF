@@ -15,11 +15,11 @@
 	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 			<f:view locale="#{languageController.locale}" />
-			<h:form id="form1">
+			<h:form id="form2">
 				<p:growl id="messages" showDetail="true" />
 
 
-				<p:panel id="panel">
+				<p:panel id="infos">
 
 
 					<h2>#{labels['customer.info']}</h2>
@@ -115,8 +115,8 @@
 						<p:outputPanel layout="block" style="text-align:center">
 							<br />
 							<br />
-							<p:commandButton action="#{accountController.setCheckingAccount}"
-								value="#{labels['action.validate']}" ajax="false" />
+							<p:commandButton action="#{accountController.setCheckingAccount}" 
+								value="#{labels['action.validate']}" ajax="false" update=":form2:infos, :form2:messages"/>
 							<p:commandButton value="#{labels['action.cancel']}"
 								onclick="PF('addCheckingAccountDlg').hide()" type="button" />
 						</p:outputPanel>
