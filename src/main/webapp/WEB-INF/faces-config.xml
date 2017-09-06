@@ -20,6 +20,11 @@
     	<resource-bundle>
     	<base-name>i18n.labels</base-name>
     	<var>labels</var></resource-bundle>
+    	
+    	<resource-bundle>
+    	<base-name>i18n.currency</base-name>
+    	<var>currency</var>
+    	</resource-bundle>
   	</application>
 	
 	
