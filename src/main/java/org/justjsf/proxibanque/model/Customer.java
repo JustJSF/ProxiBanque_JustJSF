@@ -8,6 +8,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 @Entity
 @Table (name="CUSTOMER")
@@ -22,12 +25,15 @@ public class Customer extends Person {
 	private String city;
 	private String phone;
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
 	private Advisor advisor;
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name="CHECKING_ACCOUNT_ID", referencedColumnName = "id")
 	private CheckingAccount checkingAccount;
 	@OneToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name="SAVING_ACCOUNT_ID", referencedColumnName = "id")
 	private SavingAccount savingAccount;
 
