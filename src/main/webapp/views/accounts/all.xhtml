@@ -32,9 +32,9 @@
 
 
 					<p:column headerText="#{labels['model.account.id']}"
-						sortBy="#{customerController.beanSelected.checkingAccount.id}"
+						sortBy="#{object.checkingAccount.id}"
 						filterBy="#{object.checkingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{customerController.beanSelected.checkingAccount.id}" />
+						<h:outputText value="#{object.checkingAccount.id}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
@@ -146,14 +146,14 @@
 					<p:column headerText="#{labels['model.account.id']}"
 						sortBy="#{object.savingAccount.id}"
 						filterBy="#{object.savingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{customerController.beanSelected.savingAccount.id}" />
+						<h:outputText value="#{object.savingAccount.id}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
 						sortBy="#{object.savingAccount.balance}"
 						filterBy="#{object.savingAccount.balance}"
 						filterMatchMode="contains">
-						<h:outputText value="#{object.checkingAccount.balance}" />
+						<h:outputText value="#{object.savingAccount.balance}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.person.name']}"
