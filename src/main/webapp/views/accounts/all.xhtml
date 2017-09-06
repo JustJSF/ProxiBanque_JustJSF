@@ -14,7 +14,8 @@
 			<h:form id="form1">
 
 				<p:growl id="messages1" showDetail="true" life="3000" />
-					<p:dataTable id="objects1" var="object"
+
+				<p:dataTable id="objects1" var="object"
 					value="#{customerController.list}" styleClass="et_datatable"
 					emptyMessage="#{labels['list.valueNotFound']}" editable="true"
 					rowKey="#{object.id}"
@@ -55,11 +56,11 @@
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
 
-				
+
 				</p:dataTable>
 
 
-				
+
 				<br />
 				<p:dataTable id="objects2" var="object1"
 					value="#{customerController.list}" styleClass="et_datatable"
@@ -102,11 +103,8 @@
 						<h:outputText value="#{object1.firstName}" />
 					</p:column>
 
-				
+
 				</p:dataTable>
-
-
-
 			</h:form>
 
 		</ui:define>
