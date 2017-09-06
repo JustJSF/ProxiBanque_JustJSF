@@ -13,6 +13,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+/**
+ * Cette classe est responsable de la modélisation des comptes bancaires des clients.
+ * 
+ * @author JustJSF
+ *
+ */
+
 @Entity
 @Table (name="ACCOUNT")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

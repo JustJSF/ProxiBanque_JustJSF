@@ -11,6 +11,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+/**
+ * Cette classe est responsable de la modélisation des conseillers de clientèle (advisor). En plus des attributs hérités de la classe Person, 
+ * elle ajoute des attributs propres aux conseillers : login, mot de passe, rôle ainsi qu'une liste de clients.
+ * 
+ */
 
 @Entity
 @Table(name = "ADVISOR")

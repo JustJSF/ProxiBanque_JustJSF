@@ -41,12 +41,13 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 
+				<h:form>
+					<ul class="nav navbar-nav navbar-right">
+						<p:commandButton value="#{labels['action.disconnect']}"
+							ajax="false" action="#{advisorController.logout}" />
+					</ul>
+				</h:form>
 
-				<ul class="nav navbar-nav navbar-right">
-					<p:button value="#{labels['action.disconnect']}"
-						href="#main?reverse=true" />
-
-				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>

@@ -3,6 +3,13 @@ package org.justjsf.proxibanque.model;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+/**
+ * Cette classe est responsable de la modélisation des comptes courants.
+ * 
+ * @author JustJSF
+ *
+ */
+
 @Entity
 public class CheckingAccount extends Account {
 	

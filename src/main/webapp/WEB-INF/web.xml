@@ -58,4 +58,59 @@
 	<listener>
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener>
+
+	<!-- Securité -->
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Wildcard * means all the resources in the
+				aplication require authentificatio
+			</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>director</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Wildcard * means all the resources in the
+				aplication require authentificatio
+			</web-resource-name>
+			<url-pattern>/views/customers</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>advisor</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<role-name>advisor</role-name>
+	</security-role>
+	<security-role>
+		<role-name>director</role-name>
+	</security-role>
+	<login-config>
+
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+		<form-login-page>/login.html</form-login-page>
+		<form-error-page>/error.xhtml</form-error-page>
+		</form-login-config>
+
+
+	</login-config>
+
+
+
+
+
+
 </web-app>

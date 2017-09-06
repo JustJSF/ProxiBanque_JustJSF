@@ -2,9 +2,19 @@ package org.justjsf.proxibanque.dao;
 
 import java.util.List;
 
+/**
+ * Interface définissant les méthodes qui seront utilisées.
+ * 
+ * @author JustJSF
+ *
+ */
 
 public interface EntityDao<E> {
 	
+	/**
+	 * @param e : ajoute l'e à la BDD
+	 * @throws Exception à la création de session
+	 */
 	void persist(E e) throws Exception;
 	
 	void merge(E e) throws Exception;
