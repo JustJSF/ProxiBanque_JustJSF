@@ -3,7 +3,6 @@ package org.justjsf.proxibanque.view;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -15,7 +14,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
-import org.justjsf.proxibanque.model.SavingAccount;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
