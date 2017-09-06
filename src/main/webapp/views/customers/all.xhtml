@@ -70,7 +70,7 @@
 						<p:commandLink action="/views/accounts/customer_summary.xhtml" title="#{labels['action.display.accounts']}" >
 							<h:outputText styleClass="ui-icon ui-icon-search" />
 							<f:setPropertyActionListener value="#{object}"
-								target="#{customerController.beanSelected}" />
+								target="#{accountController.beanSelected}" />
 						</p:commandLink>
 
 					</p:column>
@@ -139,7 +139,7 @@
 							requiredMessage="#{labels['new.name']}"
 							validatorMessage="#{labels['new.invalidName']}">
 							<f:validateRegex
-								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\'\s-]+$"></f:validateRegex>
 						</p:inputText>
 
 						<!-- Champ Prénom -->
@@ -151,7 +151,7 @@
 							requiredMessage="#{labels['new.firstName']}"
 							validatorMessage="#{labels['new.invalidFirst']}">
 							<f:validateRegex
-								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\'\s-]+$"></f:validateRegex>
 						</p:inputText>
 
 						<!-- Champ Adresse -->
@@ -163,7 +163,7 @@
 							requiredMessage="#{labels['new.address']}"
 							validatorMessage="#{labels['new.invalidAdress']}">
 							<f:validateRegex
-								pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+								pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\'\s-]+$"></f:validateRegex>
 						</p:inputText>
 
 						<!-- Champ code postal -->
@@ -187,7 +187,7 @@
 							requiredMessage="#{labels['new.city']}"
 							validatorMessage="#{labels['new.invalidCity']}">
 							<f:validateRegex
-								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\'\s-]+$"></f:validateRegex>
 						</p:inputText>
 
 						<!-- Champ telephone -->

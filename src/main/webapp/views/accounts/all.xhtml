@@ -14,6 +14,7 @@
 			<h:form id="form1">
 
 				<p:growl id="messages1" showDetail="true" life="3000" />
+
 				<p:dataTable id="objects1" var="object"
 					value="#{customerController.list}" styleClass="et_datatable"
 					emptyMessage="#{labels['list.valueNotFound']}" editable="true"
@@ -29,7 +30,6 @@
 								placeholder="Rechercher" />
             </p:outputPanel>
         </f:facet>
-
 
 					<p:column headerText="#{labels['model.account.id']}"
 						sortBy="#{object.checkingAccount.id}"
@@ -56,133 +56,55 @@
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
 
-					<p:column headerText="#{labels['action.delete']}" style="width:8%">
-						<p:commandLink update=":form1:display"
-							oncomplete="PF('confirmDeleteDlg').show()"
-							image="ui-icon ui-icon-close" title="#{labels['action.delete']}">
-							<f:setPropertyActionListener value="#{object}"
-								target="#{customerController.beanSelected}" />
-							<h:outputText styleClass="ui-icon ui-icon-close" />
-						</p:commandLink>
-					</p:column>
-					<p:column headerText="#{labels['action.details']}" style="width:8%">
-						<p:commandLink update=":form1:display"
-							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search"
-							title="#{labels['action.details']}">
-							<f:setPropertyActionListener value="#{object}"
-								target="#{customerController.beanSelected}" />
-							<h:outputText styleClass="ui-icon ui-icon-search" />
-						</p:commandLink>
-					</p:column>
 
 				</p:dataTable>
 
 
-				<p:dialog header="#{labels['action.delete']}"
-					widgetVar="confirmDeleteDlg" resizable="false" width="400"
-					height="60" showEffect="clip" hideEffect="clip" modal="true">
-
-					<p:outputPanel layout="block" style="text-align:center">
-						<p:commandButton value="#{labels['action.yes']}"
-							update=":form1:messages1,:form1:objects1"
-							actionListener="#{customerController.delete}"
-							oncomplete="PF('confirmDeleteDlg').hide()" />
-						<p:commandButton value="#{labels['action.no']}"
-							onclick="PF('confirmDeleteDlg').hide()" type="button" />
-					</p:outputPanel>
-				</p:dialog>
-
-
-
-				<p:dialog header="#{labels['action.update']}" widgetVar="detailsDlg"
-					resizable="false" width="750" height="400" showEffect="clip"
-					hideEffect="clip" modal="true">
-
-					<h:panelGrid id="display" columns="2" cellpadding="4"
-						style="margin:0 auto;">
-
-						<!-- Champ solde -->
-
-						<h:outputText value="#{labels['model.account.balance']}"
-							style="padding-left: 30px; padding-right: 30px;" />
-
-						<p:inputText
-							value="#{customerController.beanSelected.checkingAccount.balance}" />
-
-						<h:inputHidden
-							value="#{customerController.beanSelected.checkingAccount.id}" />
-					</h:panelGrid>
-
-					<p:outputPanel layout="block" style="text-align:center">
-						<br />
-						<br />
-						<p:commandButton value="#{labels['action.update']}"
-							update=":form1:objects1, :form1:messages1"
-							actionListener="#{customerController.update}" />
-						<p:commandButton value="#{labels['action.cancel']}"
-							onclick="PF('detailsDlg').hide()" type="button" />
-					</p:outputPanel>
-
-				</p:dialog>
 
 				<br />
-				<p:dataTable id="objects1" var="object"
+				<p:dataTable id="objects2" var="object1"
 					value="#{customerController.list}" styleClass="et_datatable"
 					emptyMessage="#{labels['list.valueNotFound']}" editable="true"
-					rowKey="#{object.id}"
+					rowKey="#{object1.id}"
 					filteredValue="#{customerController.listSelected}"
-					widgetVar="customer">
+					widgetVar="customer1">
 
 					<f:facet name="header">
             <p:outputPanel>
                 <h:outputText value="#{labels['list.savingAccount']}" />
                 <p:inputText id="globalFilter"
-								onkeyup="PF('customer').filter()" style="width:150px"
+								onkeyup="PF('customer1').filter()" style="width:150px"
 								placeholder="Rechercher" />
             </p:outputPanel>
         </f:facet>
 
 					<p:column headerText="#{labels['model.account.id']}"
-						sortBy="#{object.savingAccount.id}"
-						filterBy="#{object.savingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{object.savingAccount.id}" />
+						sortBy="#{object1.savingAccount.id}"
+						filterBy="#{object1.savingAccount.id}" filterMatchMode="contains">
+						<h:outputText value="#{object1.savingAccount.id}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
-						sortBy="#{object.savingAccount.balance}"
-						filterBy="#{object.savingAccount.balance}"
+						sortBy="#{object1.savingAccount.balance}"
+						filterBy="#{object1.savingAccount.balance}"
 						filterMatchMode="contains">
-						<h:outputText value="#{object.savingAccount.balance}" />
+						<h:outputText value="#{object1.savingAccount.balance}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.person.name']}"
-						sortBy="#{object.name}" filterBy="#{object.name}"
+						sortBy="#{object1.name}" filterBy="#{object1.name}"
 						filterMatchMode="contains">
-						<h:outputText value="#{object.name}" />
+						<h:outputText value="#{object1.name}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.person.firstName']}"
-						sortBy="#{object.firstName}" filterBy="#{object.firstName}"
+						sortBy="#{object1.firstName}" filterBy="#{object1.firstName}"
 						filterMatchMode="contains">
-						<h:outputText value="#{object.firstName}" />
+						<h:outputText value="#{object1.firstName}" />
 					</p:column>
 
-					<p:column headerText="#{labels['action.display']}" style="width:8%">
-						<p:commandLink update=":form1:display"
-							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search"
-							title="#{labels['action.details']}">
-							<f:setPropertyActionListener value="#{object.beanSelected.savingAccount}"
-								target="#{customerController.beanSelected.savingAccount.balance}" />
-							<h:outputText styleClass="ui-icon ui-icon-search" />
-						</p:commandLink>
-					</p:column>
 
 				</p:dataTable>
-
-
-
 			</h:form>
 
 		</ui:define>

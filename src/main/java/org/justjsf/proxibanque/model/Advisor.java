@@ -34,6 +34,15 @@ public class Advisor extends Person {
 
 	public Advisor() {
 	}
+	
+	public Advisor(String login, String password, Role role) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.role = role;
+	}
+
+
 
 	public String getLogin() {
 		return login;

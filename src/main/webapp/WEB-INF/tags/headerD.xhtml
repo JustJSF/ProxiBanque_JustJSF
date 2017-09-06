@@ -37,7 +37,7 @@
 				id="bs-example-navbar-collapse-2">
 				<ul class="nav navbar-nav navbar">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Actions du conseiller <span
+						data-toggle="dropdown">#{labels['model.advisor.actions']}<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><h:link value="#{labels['header.listCustomers']}"
@@ -52,17 +52,16 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		<h:form>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<p:commandButton value="#{labels['action.disconnect']}"
+						action="#{userController.logout}" />
 
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<p:button value="#{labels['action.disconnect']}"
-					href="#main?reverse=true" />
-
-			</ul>
-		</div>
-
-		<!-- /.container-fluid --> </nav>
+				</ul>
+			</div>
+		</h:form> <!-- /.container-fluid --> </nav>
 	</ui:composition>
 </body>
 </html>
