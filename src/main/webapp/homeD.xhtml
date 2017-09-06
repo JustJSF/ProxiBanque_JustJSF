@@ -10,20 +10,12 @@
 
 	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
 		<ui:define name="content">
-
+			<f:view locale="#{languageController.locale}" />
 
 			<div class="well well-lg">
 				<p:fieldset legend="#{labels['home.welcome']}" toggleable="false"
 					toggleSpeed="500">
-					<h:form>
-						<h:outputText value="#{labels['home.language']}" />
-						<br />
-						<br />
-						<p:commandButton value="Français" ajax="false"
-							action="#{languageController.changeLanguage('fr')}" />
-						<p:commandButton value="English" ajax="false"
-							action="#{languageController.changeLanguage('en')}" />
-					</h:form>
+					
 
 					<!-- 					<p:panel header="Authentification gérant" style="width: 350;"> -->
 					<!-- 						<h:form> -->
