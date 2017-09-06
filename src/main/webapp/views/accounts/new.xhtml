@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
+		<ui:define name="content">
+			<f:view locale="#{languageController.locale}" />
+
+
+
+			<h:form id="form1" style="">
+				<p:growl id="messages" showDetail="true" />
+
+
+				<p:panel id="panel">
+					<br />
+
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+						<!-- Champ Nom -->
+						<h:outputText value="#{labels['model.person.name']}" for="name"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="name" value="#{accountController.bean.name}"
+							required="true" label="#{labels['model.person.name']}"
+							requiredMessage="#{labels['new.name']}"
+							validatorMessage="#{labels['new.invalidName']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
+
+						<!-- Champ Prénom -->
+						<h:outputText value="#{labels['model.person.firstName']}"
+							for="firstName" style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="firstName"
+							value="#{accountController.bean.firstName}" required="true"
+							label="#{labels['model.person.firstName']}"
+							requiredMessage="#{labels['new.firstName']}"
+							validatorMessage="#{labels['new.invalidFirst']}">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
+						</p:inputText>
+
+						<!-- Champ login -->
+						<h:outputText value="#{labels['model.account.login']}" for="login"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="login" value="#{accountController.bean.login}"
+							required="true" label="#{labels['model.account.login']}"
+							requiredMessage="Required" />
+
+						<!-- Champ mot de passe -->
+						<h:outputText value="#{labels['model.account.password']}"
+							for="password" style="padding-left: 30px; padding-right: 30px;" />
+
+						<h:inputSecret id="password"
+							value="#{accountController.bean.password}" required="true"
+							label="#{labels['model.account.password']}"
+							requiredMessage="Required" />
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+
+							<p:commandButton value="#{labels['action.save']}" styleClass=""
+								actionListener="#{accountController.save}"
+								update=":form1:messages, :form1:panel" />
+							<p:commandButton value="#{labels['action.reset']}" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{accountController.reset}" />
+						</p:outputPanel>
+
+
+
+					</h:panelGrid>
+
+				</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

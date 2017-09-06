@@ -2,7 +2,9 @@ package org.justjsf.proxibanque.view;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -12,7 +14,9 @@ import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
+import org.justjsf.proxibanque.model.SavingAccount;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
@@ -50,6 +54,20 @@ public class CustomerController implements Serializable {
 		try {
 			this.list.addAll(service.findAll());
 			this.listSelected.addAll(list);
+			CheckingAccount checkingAccount = new CheckingAccount();
+			SavingAccount savingAccount = new SavingAccount();
+			for (Customer customer : listSelected) {
+
+				checkingAccount.setBalance(0D);
+				checkingAccount.setDate(LocalDateTime.now());
+				checkingAccount.setOverdraft(-1200D);
+				customer.setCheckingAccount(checkingAccount);
+				savingAccount.setBalance(0D);
+				savingAccount.setDate(LocalDateTime.now());
+				savingAccount.setWageRate(1.2D);
+				customer.setSavingAccount(savingAccount);
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
