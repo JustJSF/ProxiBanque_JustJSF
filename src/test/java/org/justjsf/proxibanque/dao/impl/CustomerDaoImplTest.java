@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.time.LocalDateTime;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,7 +71,7 @@ public class CustomerDaoImplTest {
 		customer.setCheckingAccount(account);
 		dao.persist(customer);
 		assertEquals("François", dao.findById(customer.getId()).getAdvisor().getFirstName());
-//		logger.log(Level.ERROR, dao.findById(customer.getId()).getCheckingAccount().getDate());
+		logger.log(Level.ERROR, dao.findById(customer.getId()).getCheckingAccount().getDate());
 		assertEquals((Double)2500D, (Double)dao.findById(customer.getId()).getCheckingAccount().getBalance());
 	}
 

@@ -1,6 +1,7 @@
 package org.justjsf.proxibanque.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -8,6 +9,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * Cette classe est responsable de la modélisation des clients. En plus des attributs hérités de la classe Person, 
@@ -21,25 +24,27 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table (name="CUSTOMER")
+@Table(name = "CUSTOMER")
 @NamedQueries({ @NamedQuery(name = "customers.findAll", query = "select o from Customer o"), })
 public class Customer extends Person {
 
 	private static final long serialVersionUID = 7078730324493569314L;
-	
 
 	private String address;
 	private String zipCode;
 	private String city;
 	private String phone;
 	@ManyToOne
-	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "ADVISOR_ID", referencedColumnName = "id")
 	private Advisor advisor;
-	@OneToOne
-	@JoinColumn(name="CHECKING_ACCOUNT_ID", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.EAGER)
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "CHECKING_ACCOUNT_ID", referencedColumnName = "id")
 	private CheckingAccount checkingAccount;
-	@OneToOne
-	@JoinColumn(name="SAVING_ACCOUNT_ID", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.EAGER)
+	@Cascade(CascadeType.ALL)
+	@JoinColumn(name = "SAVING_ACCOUNT_ID", referencedColumnName = "id")
 	private SavingAccount savingAccount;
 
 	public Customer() {
