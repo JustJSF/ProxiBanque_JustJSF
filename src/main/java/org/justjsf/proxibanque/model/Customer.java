@@ -12,14 +12,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-
 @Entity
-@Table (name="CUSTOMER")
+@Table(name = "CUSTOMER")
 @NamedQueries({ @NamedQuery(name = "customers.findAll", query = "select o from Customer o"), })
 public class Customer extends Person {
 
 	private static final long serialVersionUID = 7078730324493569314L;
-	
 
 	private String address;
 	private String zipCode;
@@ -27,15 +25,15 @@ public class Customer extends Person {
 	private String phone;
 	@ManyToOne
 	@Cascade(CascadeType.ALL)
-	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
+	@JoinColumn(name = "ADVISOR_ID", referencedColumnName = "id")
 	private Advisor advisor;
-	@OneToOne (fetch=FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@Cascade(CascadeType.ALL)
-	@JoinColumn(name="CHECKING_ACCOUNT_ID", referencedColumnName = "id")
+	@JoinColumn(name = "CHECKING_ACCOUNT_ID", referencedColumnName = "id")
 	private CheckingAccount checkingAccount;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@Cascade(CascadeType.ALL)
-	@JoinColumn(name="SAVING_ACCOUNT_ID", referencedColumnName = "id")
+	@JoinColumn(name = "SAVING_ACCOUNT_ID", referencedColumnName = "id")
 	private SavingAccount savingAccount;
 
 	public Customer() {
