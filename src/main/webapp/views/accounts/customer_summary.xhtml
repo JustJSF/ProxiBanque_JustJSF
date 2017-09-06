@@ -65,7 +65,7 @@
 							value="#{accountController.beanSelected.checkingAccount.overdraft}" />
 						<h:outputText value="#{currency['symbol']}"></h:outputText>
 						<br />
-						
+
 					</c:if>
 					<c:if
 						test="#{empty accountController.beanSelected.checkingAccount}">
@@ -79,13 +79,48 @@
 						</p:commandButton>
 
 					</c:if>
+					<c:if
+						test="#{not empty accountController.beanSelected.savingAccount}">
+						<h3>#{labels['account.saving']}</h3>
+
+						<h:outputText value="#{labels['model.account.id']}" /> :
+					<h:outputText
+							value="#{accountController.beanSelected.savingAccount.id}" />
+						<br />
+						<h:outputText value="#{labels['model.account.date']}" /> :
+					<h:outputText
+							value="#{accountController.beanSelected.savingAccount.date}" />
+						<br />
+						<h:outputText value="#{labels['model.account.balance']}" /> :
+					<h:outputText
+							value="#{accountController.beanSelected.savingAccount.balance}" />
+						<h:outputText value="#{currency['symbol']}"></h:outputText>
+						<br />
+						<h:outputText value="#{labels['model.savingaccount.wagerate']}" /> :
+					<h:outputText
+							value="#{accountController.beanSelected.savingAccount.wageRate}" />
+						<h:outputText value="%"></h:outputText>
+						<br />
+
+					</c:if>
+					<c:if test="#{empty accountController.beanSelected.savingAccount}">
+						<br />
+
+						<p:commandButton title="#{labels['account.saving.add']}"
+							oncomplete="PF('addSavingAccountDlg').show()"
+							value="#{labels['account.saving.add']}">
+							<f:setPropertyActionListener value="#{object}"
+								target="#{accountController.savingAccount}" />
+						</p:commandButton>
+
+					</c:if>
 
 					<!-- Le pop-up de création de compte Courant  -->
 					<p:dialog header="#{labels['action.update']}"
 						widgetVar="addCheckingAccountDlg" resizable="false" width="750"
 						height="400" showEffect="clip" hideEffect="clip" modal="true">
 
-						<h:panelGrid id="display" columns="2" cellpadding="4"
+						<h:panelGrid id="displayChecking" columns="2" cellpadding="4"
 							style="margin:0 auto;">
 
 							<!-- Balance -->
@@ -98,7 +133,7 @@
 								<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
 							</p:inputText>
 
-							<!-- Balance -->
+							<!-- Overdraft -->
 							<h:outputText
 								value="#{labels['model.checkingaccount.overdraft']}"
 								style="padding-left: 30px; padding-right: 30px;" />
@@ -115,11 +150,52 @@
 						<p:outputPanel layout="block" style="text-align:center">
 							<br />
 							<br />
-							<p:commandButton action="#{accountController.setCheckingAccount}" 
-								value="#{labels['action.validate']}" ajax="false" update=":form2:infos, :form2:messages"/>
+							<p:commandButton action="#{accountController.setCheckingAccount}"
+								value="#{labels['action.validate']}" ajax="false"
+								update=":form2:infos, :form2:messages" />
 							<p:commandButton value="#{labels['action.cancel']}"
 								onclick="PF('addCheckingAccountDlg').hide()" type="button" />
 						</p:outputPanel>
+					</p:dialog>
+
+					<!-- Le pop-up de création de Compte Epargne -->
+					<p:dialog header="#{labels['action.update']}"
+						widgetVar="addSavingAccountDlg" resizable="false" width="750"
+						height="400" showEffect="clip" hideEffect="clip" modal="true">
+
+						<h:panelGrid id="displaySaving" columns="2" cellpadding="4"
+							style="margin:0 auto;">
+
+														<h:outputText value="#{labels['model.account.balance']}"
+															style="padding-left: 30px; padding-right: 30px;" />
+
+														<p:inputText value="#{accountController.balance}"
+															label="#{labels['model.account.balance']}"
+															validatorMessage="#{labels['new.invalidBalance']}">
+															<f:validateDoubleRange minimum="0"></f:validateDoubleRange>
+														</p:inputText>
+
+														<h:outputText value="#{labels['model.savingaccount.wagerate']}"
+															style="padding-left: 30px; padding-right: 30px;" />
+
+														<p:inputText value="#{accountController.wageRate}"
+															label="#{labels['model.savingaccount.wagerate']}"
+															validatorMessage="#{labels['new.invalidWagerate']}">
+															<f:validateDoubleRange></f:validateDoubleRange>
+														</p:inputText>
+
+
+						</h:panelGrid>
+
+												<p:outputPanel layout="block" style="text-align:center">
+													<br />
+													<br />
+													<p:commandButton action="#{accountController.setSavingAccount}"
+														value="#{labels['action.validate']}" ajax="false"
+														update=":form2:infos, :form2:messages" />
+													<p:commandButton value="#{labels['action.cancel']}"
+														onclick="PF('addSavingAccountDlg').hide()" type="button" />
+												</p:outputPanel>
 					</p:dialog>
 				</p:panel>
 			</h:form>

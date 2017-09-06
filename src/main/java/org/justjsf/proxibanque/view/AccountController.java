@@ -12,6 +12,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
+import org.justjsf.proxibanque.model.SavingAccount;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
@@ -30,9 +31,11 @@ public class AccountController implements Serializable{
 	private Customer bean;
 	private Customer beanSelected;
 	private CheckingAccount checkingAccount;
+	private SavingAccount savingAccount;
 	private Double balance = 0.0D;
 	private LocalDateTime date;
 	private Double overdraft = -1000D;
+	private Double wageRate = 3.0D;
 
 	@PostConstruct
 	public void init() {
@@ -153,6 +156,26 @@ public class AccountController implements Serializable{
 		this.overdraft = overdraft;
 	}
 	
+	public SavingAccount getSavingAccount() {
+		return savingAccount;
+	}
+
+
+	public void setSavingAccount(SavingAccount savingAccount) {
+		this.savingAccount = savingAccount;
+	}
+
+
+	public Double getWageRate() {
+		return wageRate;
+	}
+
+
+	public void setWageRate(Double wageRate) {
+		this.wageRate = wageRate;
+	}
+
+
 	public void setCheckingAccount() {
 		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
 			this.checkingAccount = new CheckingAccount();
@@ -167,5 +190,19 @@ public class AccountController implements Serializable{
 			}
 		}
 }
+	public void setSavingAccount() {
+		if (this.beanSelected != null && this.beanSelected.getSavingAccount() == null) {
+			this.savingAccount = new SavingAccount();
+			this.savingAccount.setBalance(this.balance);
+			this.savingAccount.setWageRate(this.wageRate);
+			this.savingAccount.setDate(LocalDateTime.now());
+			this.beanSelected.setSavingAccount(this.savingAccount);
+			try {
+				service.merge(this.beanSelected);
+			} catch (Exception e) {
+				notificationError(e, "Add Saving Account error");
+			}
+		}
+	}
 
 }
