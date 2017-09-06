@@ -183,6 +183,8 @@ public class AccountController implements Serializable{
 			this.checkingAccount.setOverdraft(this.overdraft);
 			this.checkingAccount.setDate(LocalDateTime.now());
 			this.beanSelected.setCheckingAccount(this.checkingAccount);
+			this.balance = 0.0D;
+			this.overdraft = -1000D;
 			try {
 				service.merge(this.beanSelected);
 			} catch (Exception e) {
@@ -197,6 +199,8 @@ public class AccountController implements Serializable{
 			this.savingAccount.setWageRate(this.wageRate);
 			this.savingAccount.setDate(LocalDateTime.now());
 			this.beanSelected.setSavingAccount(this.savingAccount);
+			this.balance = 0.0D;
+			this.wageRate = 3.0D;
 			try {
 				service.merge(this.beanSelected);
 			} catch (Exception e) {
