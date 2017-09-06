@@ -54,12 +54,6 @@
 						<h:outputText value="#{object.login}" />
 					</p:column>
 
-					<p:column headerText="#{labels['model.advisor.password']}"
-						sortBy="#{object.password}" filterBy="#{object.password}"
-						filterMatchMode="contains">
-						<h:outputText value="#{object.password}" />
-					</p:column>
-
 
 					<p:column headerText="#{labels['action.delete']}" style="width:8%">
 						<p:commandLink update=":form1:display"
@@ -89,6 +83,13 @@
 
 							<h:outputText value="#{labels['model.person.firstName']}" />
 							<h:outputText value="#{object.firstName}" />
+
+							<h:outputText value="#{labels['model.advisor.login']}"
+								sortBy="#{object.login}" filterBy="#{object.login}"
+								filterMatchMode="contains" />
+							<h:outputText value="#{object.login}" />
+
+
 						</p:panelGrid>
 					</p:rowExpansion>
 				</p:dataTable>
@@ -140,12 +141,6 @@
 							<f:validateRegex
 								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$"></f:validateRegex>
 						</p:inputText>
-
-						<!-- Champ Identifiant -->
-						<h:outputText value="#{labels['model.advisor.login']}"
-							style="padding-left: 30px; padding-right: 30px;" />
-
-						<p:inputText value="#{advisorController.beanSelected.login}" />
 
 						<h:inputHidden value="#{advisorController.beanSelected.id}" />
 					</h:panelGrid>
