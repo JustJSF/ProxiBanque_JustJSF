@@ -12,7 +12,7 @@ import java.util.List;
 public interface EntityDao<E> {
 	
 	/**
-	 * @param e : ajoute l'e à la BDD
+	 * @param e : ajoute e à la BDD
 	 * @throws Exception à la création de session
 	 */
 	void persist(E e) throws Exception;
