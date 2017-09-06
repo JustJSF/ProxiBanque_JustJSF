@@ -65,19 +65,14 @@
 						</p:commandLink>
 					</p:column>
 
-					<!-- 					<p:button value="#{labels['header.createCustomer']}" -->
-					<!-- 						outcome="/views/customers/new.xhtml" /> -->
-
 					<p:column headerText="#{labels['action.display.accounts']}"
 						style="width:8%">
 						<p:commandLink action="/views/accounts/customer_summary.xhtml" title="#{labels['action.display.accounts']}" >
 							<h:outputText styleClass="ui-icon ui-icon-search" />
+							<f:setPropertyActionListener value="#{object}"
+								target="#{customerController.beanSelected}" />
 						</p:commandLink>
 
-						<!-- 						<p:button title="#{labels['action.delete']}" -->
-<!-- 						actionListener="#{customerController.displayCustomer}" -->
-						<!-- 							outcome="/views/customers/new.xhtml" /> -->
-						<!-- 						<h:outputText styleClass="ui-icon ui-icon-search" /> -->
 					</p:column>
 
 					<p:column headerText="#{labels['action.delete']}" style="width:8%">

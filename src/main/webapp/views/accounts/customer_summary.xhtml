@@ -11,12 +11,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 </head>
 <h:body>
-	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 			<f:view locale="#{languageController.locale}" />
+			<h:form id="form1">
+				<h:outputText value="#{customerController.beanSelected.name}" />
+				<br />
+				<h:outputText value="#{customerController.beanSelected.firstName}" />
+				<br />
 
-			<div>Youpi</div>
+				<h:outputText value="#{customerController.beanSelected.checkingAccount.id}"/>
+				<br />
+				<h:outputText value="#{customerController.beanSelected.checkingAccount.date}"/>
+				<br />
+				<h:outputText value="#{customerController.beanSelected.checkingAccount.balance}"/>
+				<br />
 
+				<p:commandButton action="#{customerController.setCheckingAccount}"
+					value="#{labels['account.checking.add']}" ajax="false"/>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
