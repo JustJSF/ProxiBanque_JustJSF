@@ -1,6 +1,7 @@
 package org.justjsf.proxibanque.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -19,7 +20,6 @@ public class Customer extends Person {
 
 	private static final long serialVersionUID = 7078730324493569314L;
 	
-
 	private String address;
 	private String zipCode;
 	private String city;
@@ -28,7 +28,7 @@ public class Customer extends Person {
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name= "ADVISOR_ID", referencedColumnName = "id")
 	private Advisor advisor;
-	@OneToOne
+	@OneToOne (fetch=FetchType.EAGER)
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name="CHECKING_ACCOUNT_ID", referencedColumnName = "id")
 	private CheckingAccount checkingAccount;

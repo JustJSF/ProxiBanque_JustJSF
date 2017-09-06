@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
-	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 			<f:view locale="#{languageController.locale}" />
 
@@ -32,9 +32,9 @@
 
 
 					<p:column headerText="#{labels['model.account.id']}"
-						sortBy="#{object.checkingAccount.id}"
+						sortBy="#{customerController.beanSelected.checkingAccount.id}"
 						filterBy="#{object.checkingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{object.checkingAccount.id}" />
+						<h:outputText value="#{customerController.beanSelected.checkingAccount.id}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
@@ -146,7 +146,7 @@
 					<p:column headerText="#{labels['model.account.id']}"
 						sortBy="#{object.savingAccount.id}"
 						filterBy="#{object.savingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{object.savingAccount.id}" />
+						<h:outputText value="#{customerController.beanSelected.savingAccount.id}" />
 					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"

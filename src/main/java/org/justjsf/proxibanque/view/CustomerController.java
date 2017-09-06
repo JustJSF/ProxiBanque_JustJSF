@@ -1,6 +1,5 @@
 package org.justjsf.proxibanque.view;
 
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.annotation.PostConstruct;
 
@@ -23,28 +22,24 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
-
-@Component(value="customerController")
-@ViewScoped
+@Component(value = "customerController")
+@SessionScoped
 public class CustomerController implements Serializable {
-	
+
 	private static final long serialVersionUID = 6326248244940512537L;
 
 	@Autowired
 	private IService service;
-	
+
 	private Customer bean;
 	private Customer beanSelected;
 	private List<Customer> list;
 	private List<Customer> listSelected;
-	
+
 	@PostConstruct
-    public void init() {
+	public void init() {
 		refreshList();
-    }
-
-
+	}
 
 	public void refreshList() {
 		this.bean = new Customer();
@@ -71,18 +66,17 @@ public class CustomerController implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	
 	public void save() {
 		try {
-		    
+
 			service.persist(this.bean);
 			refreshList();
 			notificationSuccess("persist customer");
 		} catch (Exception e) {
-			notificationError(e,"persist customer");
+			notificationError(e, "persist customer");
 			e.printStackTrace();
 		}
 	}
@@ -93,7 +87,7 @@ public class CustomerController implements Serializable {
 			refreshList();
 			notificationSuccess("update customer");
 		} catch (Exception e) {
-			notificationError(e,"update customer");
+			notificationError(e, "update customer");
 		}
 	}
 
@@ -103,7 +97,7 @@ public class CustomerController implements Serializable {
 			refreshList();
 			notificationSuccess("delete customer");
 		} catch (Exception e) {
-			notificationError(e,"delete customer");
+			notificationError(e, "delete customer");
 		}
 	}
 
@@ -111,28 +105,25 @@ public class CustomerController implements Serializable {
 		refreshList();
 	}
 
-	
 	public void reset() {
 		refreshList();
-        RequestContext.getCurrentInstance().reset("form1:panel");  
+		RequestContext.getCurrentInstance().reset("form1:panel");
 	}
 
-	
 	public void notificationSuccess(String operation) {
-		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation "+operation+" success");
-		FacesMessage msg = null;  
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Opération effectuée"); 
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation " + operation + " success");
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Opération effectuée");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-
 
 	public void notificationError(Exception e, String operation) {
-		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation "+operation+" Error ",e);
-		FacesMessage msg = null;  
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");  
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation " + operation + " Error ", e);
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-	
+
 	public IService getCustomerService() {
 		return service;
 	}
@@ -158,7 +149,7 @@ public class CustomerController implements Serializable {
 	}
 
 	public List<Customer> getList() {
-		if(list == null){
+		if (list == null) {
 			list = new ArrayList<Customer>();
 		}
 		return list;
@@ -176,8 +167,18 @@ public class CustomerController implements Serializable {
 		this.listSelected = listSelected;
 	}
 
-	
-	
-	
-	
+	public void setCheckingAccount() {
+		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
+			CheckingAccount checkingAccount = new CheckingAccount();
+			checkingAccount.setBalance(0D);
+			checkingAccount.setDate(LocalDateTime.now());
+			this.beanSelected.setCheckingAccount(checkingAccount);
+			try {
+				service.merge(this.beanSelected);
+			} catch (Exception e) {
+				notificationError(e, "Add Checking Account error");
+			}
+		}
+	}
+
 }
