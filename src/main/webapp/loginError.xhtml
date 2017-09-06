@@ -10,11 +10,12 @@
 	<h:form>
 		<f:view locale="#{languageController.locale}" />
 		<p:panelGrid columns="2">
-			<h:outputText value="#{labels['login.error']}" />
+
 			<h:outputText value="#{labels['model.advisor.login']}" />
 			<h:inputText value="#{userController.login}" id="login"
 				label="#{labels['model.advisor.login']}">
 				<f:validateLength minimum="4" />
+				<h:outputText value="#{labels['login.error']}" />
 			</h:inputText>
 			<br />
 			<h:message for="login" errorStyle="color:red"></h:message>
