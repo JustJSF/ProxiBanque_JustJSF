@@ -19,18 +19,28 @@
 					<p:panelGrid columns="2" styleClass="outerpanelgrid">
 						<p:panel header="#{labels['home.signin']}" style="width: 350;">
 							<h:form>
-									<h:outputLabel for="#{advisorController.bean.login}"
-										value="Identifiant " />
-									<h:inputText value="#{advisorController.bean.login}"
-										label="login"></h:inputText>
-									<h:outputLabel for="#{advisorController.bean.password}"
-										value="Mot de passe " />
-									<h:inputSecret value="#{advisorController.bean.password}"></h:inputSecret>
+								<h:outputLabel for="#{advisorController.bean.login}"
+									value="Identifiant " />
+								<h:inputText value="#{advisorController.bean.login}"
+									label="login"></h:inputText>
+								<h:outputLabel for="#{advisorController.bean.password}"
+									value="Mot de passe " />
+								<h:inputSecret value="#{advisorController.bean.password}"></h:inputSecret>
 
-									<h:commandButton type="submit" value="Connexion"
-										action="#{advisorController.login1}"></h:commandButton>
+								<h:commandButton type="submit" value="Connexion"
+									action="#{advisorController.login1}"></h:commandButton>
 							</h:form>
 						</p:panel>
+						<h:form>
+
+							<br />
+							<br />
+							<h:commandButton value="Français"
+								action="#{languageController.changeLanguage('fr')}" />
+							<h:commandButton value="English"
+								action="#{languageController.changeLanguage('en')}" />
+						</h:form>
+
 						<!-- 					<p:panel header="Authentification gérant" style="width: 350;"> -->
 						<!-- 						<h:form> -->
 

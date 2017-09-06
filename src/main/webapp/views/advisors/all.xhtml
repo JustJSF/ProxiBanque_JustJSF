@@ -9,6 +9,7 @@
 <h:body>
 	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
 		<ui:define name="content">
+			<f:view locale="#{languageController.locale}" />
 
 			<h:form id="form1">
 
@@ -46,19 +47,19 @@
 						filterMatchMode="contains">
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
-					
+
 					<p:column headerText="#{labels['model.advisor.login']}"
 						sortBy="#{object.login}" filterBy="#{object.login}"
 						filterMatchMode="contains">
 						<h:outputText value="#{object.login}" />
 					</p:column>
-					
+
 					<p:column headerText="#{labels['model.advisor.password']}"
 						sortBy="#{object.password}" filterBy="#{object.password}"
 						filterMatchMode="contains">
 						<h:outputText value="#{object.password}" />
 					</p:column>
-					
+
 
 					<p:column headerText="#{labels['action.delete']}" style="width:8%">
 						<p:commandLink update=":form1:display"
@@ -72,7 +73,8 @@
 					<p:column headerText="#{labels['action.details']}" style="width:8%">
 						<p:commandLink update=":form1:display"
 							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search" title="#{labels['action.details']}">
+							image="ui-icon ui-icon-search"
+							title="#{labels['action.details']}">
 							<f:setPropertyActionListener value="#{object}"
 								target="#{advisorController.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-search" />
@@ -92,9 +94,9 @@
 				</p:dataTable>
 
 
-				<p:dialog header="#{labels['action.delete']}" widgetVar="confirmDeleteDlg"
-					resizable="false" width="400" height="60" showEffect="clip"
-					hideEffect="clip" modal="true">
+				<p:dialog header="#{labels['action.delete']}"
+					widgetVar="confirmDeleteDlg" resizable="false" width="400"
+					height="60" showEffect="clip" hideEffect="clip" modal="true">
 
 					<p:outputPanel layout="block" style="text-align:center">
 						<p:commandButton value="#{labels['action.yes']}"
@@ -108,9 +110,9 @@
 
 
 
-				<p:dialog header="#{labels['action.update']}" widgetVar="detailsDlg" resizable="false"
-					width="750" height="400" showEffect="clip" hideEffect="clip"
-					modal="true">
+				<p:dialog header="#{labels['action.update']}" widgetVar="detailsDlg"
+					resizable="false" width="750" height="400" showEffect="clip"
+					hideEffect="clip" modal="true">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
@@ -119,7 +121,8 @@
 						<h:outputText value="#{labels['model.person.name']}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText value="#{advisorController.beanSelected.name}" label="#{labels['model.person.name']}"
+						<p:inputText value="#{advisorController.beanSelected.name}"
+							label="#{labels['model.person.name']}"
 							requiredMessage="#{labels['new.name']}"
 							validatorMessage="#{labels['new.invalidName']}">
 							<f:validateRegex
@@ -143,8 +146,8 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText value="#{advisorController.beanSelected.login}" />
-						
-						<h:inputHidden value="#{advisorController.beanSelected.id}"/>
+
+						<h:inputHidden value="#{advisorController.beanSelected.id}" />
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
@@ -152,7 +155,7 @@
 						<br />
 						<p:commandButton value="#{labels['action.update']}"
 							update=":form1:objects1, :form1:messages1"
-							actionListener="#{advisorController.update}"/>
+							actionListener="#{advisorController.update}" />
 						<p:commandButton value="#{labels['action.cancel']}"
 							onclick="PF('detailsDlg').hide()" type="button" />
 					</p:outputPanel>
