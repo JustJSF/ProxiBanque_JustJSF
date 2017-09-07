@@ -15,11 +15,11 @@
 	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 			<f:view locale="#{languageController.locale}" />
-			<h:form id="form2">
-				<p:growl id="messages" showDetail="true" />
+			<h:form id="form1">
+				<p:growl id="messages1" showDetail="true" />
 
 
-				<p:panel id="infos">
+				<p:panel id="infos1">
 
 
 					<h2>#{labels['customer.info']}</h2>
@@ -152,12 +152,16 @@
 							<br />
 							<p:commandButton action="#{accountController.setCheckingAccount}"
 								value="#{labels['action.validate']}" ajax="false"
-								update=":form2:infos, :form2:messages" />
+								update=":form2:infos1, :form2:messages1" />
 							<p:commandButton value="#{labels['action.cancel']}"
 								onclick="PF('addCheckingAccountDlg').hide()" type="button" />
 						</p:outputPanel>
 					</p:dialog>
-
+		</p:panel>
+</h:form>
+<h:form id="form2">
+<p:growl id="messages2" showDetail="true" />
+<p:panel id="infos2">
 					<!-- Le pop-up de création de Compte Epargne -->
 					<p:dialog header="#{labels['action.update']}"
 						widgetVar="addSavingAccountDlg" resizable="false" width="750"
@@ -192,7 +196,7 @@
 													<br />
 													<p:commandButton action="#{accountController.setSavingAccount}"
 														value="#{labels['action.validate']}" ajax="false"
-														update=":form2:infos, :form2:messages" />
+														update=":form2:infos2, :form2:messages" />
 													<p:commandButton value="#{labels['action.cancel']}"
 														onclick="PF('addSavingAccountDlg').hide()" type="button" />
 												</p:outputPanel>

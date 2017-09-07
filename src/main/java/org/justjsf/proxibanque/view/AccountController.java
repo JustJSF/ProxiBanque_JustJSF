@@ -46,9 +46,9 @@ public class AccountController implements Serializable{
 		try {
 
 			service.persist(this.bean);
-			notificationSuccess("persist customer");
+			notificationSuccess("persist account");
 		} catch (Exception e) {
-			notificationError(e, "persist customer");
+			notificationError(e, "persist account");
 			e.printStackTrace();
 		}
 	}
@@ -56,18 +56,18 @@ public class AccountController implements Serializable{
 	public void update() {
 		try {
 			service.merge(this.beanSelected);
-			notificationSuccess("update customer");
+			notificationSuccess("update account");
 		} catch (Exception e) {
-			notificationError(e, "update customer");
+			notificationError(e, "update account");
 		}
 	}
 
 	public void delete() {
 		try {
 			service.remove(this.beanSelected.getId());
-			notificationSuccess("delete customer");
+			notificationSuccess("delete account");
 		} catch (Exception e) {
-			notificationError(e, "delete customer");
+			notificationError(e, "delete account");
 		}
 	}
 
