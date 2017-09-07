@@ -3,7 +3,7 @@ package org.justjsf.proxibanque.dao;
 import org.justjsf.proxibanque.model.Account;
 
 /**
- * Interface définissant les méthodes qui seront utilisées.
+ * Interface définissant la persistance pour les objets de type Compte
  * 
  * @author JustJSF
  *

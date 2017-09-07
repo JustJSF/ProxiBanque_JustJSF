@@ -16,7 +16,6 @@ import javax.persistence.MappedSuperclass;
  * @author JustJSF
  *
  */
-
 @MappedSuperclass
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Person implements Serializable{

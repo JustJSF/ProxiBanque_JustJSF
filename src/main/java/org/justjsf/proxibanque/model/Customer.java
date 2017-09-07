@@ -12,17 +12,17 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+
 /**
  * Cette classe est responsable de la modélisation des clients. En plus des attributs hérités de la classe Person, 
  * elle ajoute des attributs propres aux clients (adresse, code postal, ville et téléphone).
  * 
  * La classe permet de faire un lien entre un conseiller (advisor) et un client, ainsi qu'entre un client et ses comptes
  * bancaires (checkingAccount et savingAccount).
+ * 
+ * @author JustJSF
  *
  */
-
-
-
 @Entity
 @Table(name = "CUSTOMER")
 @NamedQueries({ @NamedQuery(name = "customers.findAll", query = "select o from Customer o"), })

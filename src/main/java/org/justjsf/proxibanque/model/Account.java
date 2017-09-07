@@ -19,7 +19,6 @@ import javax.persistence.Table;
  * @author JustJSF
  *
  */
-
 @Entity
 @Table (name="ACCOUNT")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

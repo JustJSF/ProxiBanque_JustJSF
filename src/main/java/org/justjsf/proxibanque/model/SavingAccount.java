@@ -9,7 +9,6 @@ import javax.persistence.OneToOne;
  * @author JustJSF
  *
  */
-
 @Entity
 public class SavingAccount extends Account {
 

@@ -15,8 +15,9 @@ import javax.persistence.Table;
  * Cette classe est responsable de la modélisation des conseillers de clientèle (advisor). En plus des attributs hérités de la classe Person, 
  * elle ajoute des attributs propres aux conseillers : login, mot de passe, rôle ainsi qu'une liste de clients.
  * 
+ * @author JustJSF
+ *
  */
-
 @Entity
 @Table(name = "ADVISOR")
 @NamedQueries({ @NamedQuery(name = "advisors.findAll", query = "select o from Advisor o"), })

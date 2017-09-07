@@ -3,9 +3,8 @@ package org.justjsf.proxibanque.dao;
 import java.util.List;
 
 /**
- * Interface définissant les méthodes qui seront utilisées.
+ * Interface générique définissant les méthodes de persistance pour tous les objets.
  * 
- * @author JustJSF
  *
  */
 

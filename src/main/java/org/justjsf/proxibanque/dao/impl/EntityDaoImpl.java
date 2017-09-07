@@ -13,6 +13,11 @@ import org.justjsf.proxibanque.dao.EntityDao;
 import org.hibernate.HibernateException;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Implementation générique des méthodes pour la persistance des Objets métier.
+ *
+ * @param <E> Le type générique à persister
+ */
 public class EntityDaoImpl<E> implements EntityDao<E> {
 
 	@PersistenceContext(unitName = "persistenceUnit")
