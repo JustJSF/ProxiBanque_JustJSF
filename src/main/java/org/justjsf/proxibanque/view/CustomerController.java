@@ -15,6 +15,7 @@ import org.justjsf.proxibanque.model.Customer;
 import org.justjsf.proxibanque.service.IService;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.chart.PieChartModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,14 +28,19 @@ public class CustomerController implements Serializable {
 	@Autowired
 	private IService service;
 
+	private PieChartModel pieModel1;
+	private PieChartModel pieModel2;
 	private Customer bean;
 	private Customer beanSelected;
 	private List<Customer> list;
 	private List<Customer> listSelected;
+	private List<Customer> listAudit;
 
 	@PostConstruct
 	public void init() {
 		refreshList();
+		refreshListAudit();
+		createPieModels();
 	}
 
 	public void refreshList() {
@@ -49,6 +55,27 @@ public class CustomerController implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	public void refreshListAudit() {
+		this.bean = new Customer();
+		this.beanSelected = new Customer();
+		this.list = new ArrayList<Customer>();
+		this.listAudit = new ArrayList<Customer>();
+		pieModel2 = new PieChartModel();
+		pieModel1 = new PieChartModel();
+
+		try {
+			this.list.addAll(service.findAll());
+			this.listAudit.addAll(service.getAudit());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		pieModel2.set("Comptes ok", listSelected.size()-listAudit.size());
+		pieModel2.set("Comptes ko", listAudit.size());
 
 	}
 
@@ -148,6 +175,54 @@ public class CustomerController implements Serializable {
 
 	public void setListSelected(List<Customer> listSelected) {
 		this.listSelected = listSelected;
+	}
+
+	public List<Customer> getListAudit() {
+		return listAudit;
+	}
+
+	public void setListAudit(List<Customer> listAudit) {
+		this.listAudit = listAudit;
+	}
+
+	private void createPieModel1() {
+		pieModel1 = new PieChartModel();
+
+		pieModel1.set("Comptes ok", listSelected.size());
+		pieModel1.set("Comptes ko", listAudit.size());
+
+		pieModel1.setTitle("Simple Pie");
+		pieModel1.setLegendPosition("w");
+	}
+
+	private void createPieModel2() {
+
+		pieModel2.setTitle("Répartition des comptes");
+		pieModel2.setLegendPosition("e");
+		pieModel2.setFill(false);
+		pieModel2.setShowDataLabels(true);
+		pieModel2.setDiameter(150);
+	}
+
+	public PieChartModel getPieModel2() {
+		return pieModel2;
+	}
+
+	public void setPieModel2(PieChartModel pieModel2) {
+		this.pieModel2 = pieModel2;
+	}
+
+	public PieChartModel getPieModel1() {
+		return pieModel1;
+	}
+
+	public void setPieModel1(PieChartModel pieModel1) {
+		this.pieModel1 = pieModel1;
+	}
+
+	private void createPieModels() {
+		createPieModel1();
+		createPieModel2();
 	}
 
 }

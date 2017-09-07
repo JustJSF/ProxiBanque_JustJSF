@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/WEB-INF/tags/layoutD.xhtml">
+		<ui:define name="content">
+			<f:view locale="#{languageController.locale}" />
+
+			<h:form id="form1">
+
+	<p:chart type="pie" model="#{customerController.pieModel2}" style="width:400px;height:300px" />
+				<p:growl id="messages1" showDetail="true" life="3000" />
+
+				<p:dataTable id="objects1" var="object"
+					value="#{customerController.list}" styleClass="et_datatable"
+					emptyMessage="#{labels['list.valueNotFound']}" editable="true"
+					rowKey="#{object.id}"
+					filteredValue="#{customerController.listAudit}"
+					widgetVar="customer">
+
+					<f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="#{labels['list.checkingAccount']}" />
+                <p:inputText id="globalFilter"
+								onkeyup="PF('customer').filter()" style="width:150px"
+								placeholder="Rechercher" />
+            </p:outputPanel>
+        </f:facet>
+
+					<p:column headerText="#{labels['model.account.id']}"
+						sortBy="#{object.checkingAccount.id}"
+						filterBy="#{object.checkingAccount.id}" filterMatchMode="contains">
+						<h:outputText value="#{object.checkingAccount.id}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.account.balance']}"
+						sortBy="#{object.checkingAccount.balance}"
+						filterBy="#{object.checkingAccount.balance}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.checkingAccount.balance}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.name']}"
+						sortBy="#{object.name}" filterBy="#{object.name}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.name}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.firstName']}"
+						sortBy="#{object.firstName}" filterBy="#{object.firstName}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.firstName}" />
+					</p:column>
+
+
+				</p:dataTable>
+
+
+
+				<br />
+				<p:dataTable id="objects2" var="object1"
+					value="#{customerController.list}" styleClass="et_datatable"
+					emptyMessage="#{labels['list.valueNotFound']}" editable="true"
+					rowKey="#{object1.id}"
+					filteredValue="#{customerController.listAudit}"
+					widgetVar="customer1">
+
+					<f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="#{labels['list.savingAccount']}" />
+                <p:inputText id="globalFilter"
+								onkeyup="PF('customer1').filter()" style="width:150px"
+								placeholder="Rechercher" />
+            </p:outputPanel>
+        </f:facet>
+
+					<p:column headerText="#{labels['model.account.id']}"
+						sortBy="#{object1.savingAccount.id}"
+						filterBy="#{object1.savingAccount.id}" filterMatchMode="contains">
+						<h:outputText value="#{object1.savingAccount.id}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.account.balance']}"
+						sortBy="#{object1.savingAccount.balance}"
+						filterBy="#{object1.savingAccount.balance}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object1.savingAccount.balance}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.name']}"
+						sortBy="#{object1.name}" filterBy="#{object1.name}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object1.name}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.person.firstName']}"
+						sortBy="#{object1.firstName}" filterBy="#{object1.firstName}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object1.firstName}" />
+					</p:column>
+
+
+				</p:dataTable>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

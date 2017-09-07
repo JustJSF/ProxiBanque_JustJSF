@@ -1,5 +1,6 @@
 package org.justjsf.proxibanque.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.justjsf.proxibanque.dao.ICustomerDao;
@@ -17,7 +18,6 @@ public class ServiceImpl implements IService {
 	public void persist(Customer customer) throws Exception {
 		customerDao.persist(customer);
 	}
-	
 
 	@Override
 	public void merge(Customer customer) throws Exception {
@@ -33,10 +33,37 @@ public class ServiceImpl implements IService {
 	public void remove(Long idCustomer) throws Exception {
 		customerDao.remove(idCustomer);
 	}
-	
+
 	@Override
-	public List<Customer> findAll() throws Exception{
+	public List<Customer> findAll() throws Exception {
 		return customerDao.findAll();
 	}
 
+	@Override
+	public List<Customer> getAudit() throws Exception {
+		List<Customer> customers = customerDao.findAll();
+		List<Customer> audit = new ArrayList<>();
+		for (Customer customer : customers) {
+			if (customer.getCheckingAccount().getBalance() < -5000
+					|| customer.getCheckingAccount().getBalance() < -5000) {
+				audit.add(customer);
+			}
+		}
+		return audit;
+
+	}
+	
+	@Override
+	public List<Customer> getWealthy() throws Exception {
+		List<Customer> customers = customerDao.findAll();
+		List<Customer> wealthy = new ArrayList<>();
+		for (Customer customer : customers) {
+			if (customer.getCheckingAccount().getBalance() >50000
+					|| customer.getCheckingAccount().getBalance() > 50000) {
+				wealthy.add(customer);
+			}
+		}
+		return wealthy;
+
+	}
 }

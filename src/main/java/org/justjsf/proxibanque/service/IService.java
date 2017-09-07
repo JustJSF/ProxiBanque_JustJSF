@@ -16,4 +16,8 @@ public interface IService {
 
 	List<Customer> findAll() throws Exception;
 
+	List<Customer> getAudit() throws Exception;
+
+	List<Customer> getWealthy() throws Exception;
+
 }
