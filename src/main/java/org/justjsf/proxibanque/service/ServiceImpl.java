@@ -46,7 +46,7 @@ public class ServiceImpl implements IService {
 		List<Customer> audit = new ArrayList<>();
 		for (Customer customer : customers) {
 			if (customer.getCheckingAccount().getBalance() < -5000
-					|| customer.getCheckingAccount().getBalance() < -5000) {
+					|| customer.getSavingAccount().getBalance() < -5000) {
 				audit.add(customer);
 			}
 		}
@@ -60,7 +60,7 @@ public class ServiceImpl implements IService {
 		List<Customer> wealthy = new ArrayList<>();
 		for (Customer customer : customers) {
 			if (customer.getCheckingAccount().getBalance() > 50000
-					|| customer.getCheckingAccount().getBalance() > 50000) {
+					|| customer.getSavingAccount().getBalance() > 50000) {
 				wealthy.add(customer);
 			}
 		}

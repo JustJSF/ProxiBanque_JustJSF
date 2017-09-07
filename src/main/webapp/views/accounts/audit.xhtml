@@ -13,7 +13,8 @@
 
 			<h:form id="form1">
 
-	<p:chart type="pie" model="#{customerController.pieModel2}" style="width:400px;height:300px" />
+				<p:chart type="pie" model="#{customerController.pieModel2}"
+					style="width:400px;height:300px" />
 				<p:growl id="messages1" showDetail="true" life="3000" />
 
 				<p:dataTable id="objects1" var="object"
@@ -28,15 +29,9 @@
                 <h:outputText value="#{labels['list.checkingAccount']}" />
                 <p:inputText id="globalFilter"
 								onkeyup="PF('customer').filter()" style="width:150px"
-								placeholder="Rechercher" />
+								placeholder="#{labels['action.search']}" />
             </p:outputPanel>
         </f:facet>
-
-					<p:column headerText="#{labels['model.account.id']}"
-						sortBy="#{object.checkingAccount.id}"
-						filterBy="#{object.checkingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{object.checkingAccount.id}" />
-					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
 						sortBy="#{object.checkingAccount.balance}"
@@ -57,6 +52,12 @@
 						<h:outputText value="#{object.firstName}" />
 					</p:column>
 
+					<p:column headerText="#{labels['model.customer.phone']}"
+						sortBy="#{object.phone}" filterBy="#{object.phone}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object.phone}" />
+					</p:column>
+
 
 				</p:dataTable>
 
@@ -75,15 +76,9 @@
                 <h:outputText value="#{labels['list.savingAccount']}" />
                 <p:inputText id="globalFilter"
 								onkeyup="PF('customer1').filter()" style="width:150px"
-								placeholder="Rechercher" />
+								placeholder="#{labels['action.search']}" />
             </p:outputPanel>
         </f:facet>
-
-					<p:column headerText="#{labels['model.account.id']}"
-						sortBy="#{object1.savingAccount.id}"
-						filterBy="#{object1.savingAccount.id}" filterMatchMode="contains">
-						<h:outputText value="#{object1.savingAccount.id}" />
-					</p:column>
 
 					<p:column headerText="#{labels['model.account.balance']}"
 						sortBy="#{object1.savingAccount.balance}"
@@ -102,6 +97,12 @@
 						sortBy="#{object1.firstName}" filterBy="#{object1.firstName}"
 						filterMatchMode="contains">
 						<h:outputText value="#{object1.firstName}" />
+					</p:column>
+
+					<p:column headerText="#{labels['model.customer.phone']}"
+						sortBy="#{object1.phone}" filterBy="#{object1.phone}"
+						filterMatchMode="contains">
+						<h:outputText value="#{object1.phone}" />
 					</p:column>
 
 

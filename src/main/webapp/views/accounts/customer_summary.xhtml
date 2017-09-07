@@ -47,10 +47,6 @@
 						test="#{not empty accountController.beanSelected.checkingAccount}">
 						<h3>#{labels['account.checking']}</h3>
 
-						<h:outputText value="#{labels['model.account.id']}" /> :
-					<h:outputText
-							value="#{accountController.beanSelected.checkingAccount.id}" />
-						<br />
 						<h:outputText value="#{labels['model.account.date']}" /> :
 					<h:outputText
 							value="#{accountController.beanSelected.checkingAccount.date}" />
@@ -83,10 +79,6 @@
 						test="#{not empty accountController.beanSelected.savingAccount}">
 						<h3>#{labels['account.saving']}</h3>
 
-						<h:outputText value="#{labels['model.account.id']}" /> :
-					<h:outputText
-							value="#{accountController.beanSelected.savingAccount.id}" />
-						<br />
 						<h:outputText value="#{labels['model.account.date']}" /> :
 					<h:outputText
 							value="#{accountController.beanSelected.savingAccount.date}" />

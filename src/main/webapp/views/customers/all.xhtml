@@ -67,7 +67,8 @@
 
 					<p:column headerText="#{labels['action.display.accounts']}"
 						style="width:8%">
-						<p:commandLink action="/views/accounts/customer_summary.xhtml" title="#{labels['action.display.accounts']}" >
+						<p:commandLink action="/views/accounts/customer_summary.xhtml"
+							title="#{labels['action.display.accounts']}">
 							<h:outputText styleClass="ui-icon ui-icon-search" />
 							<f:setPropertyActionListener value="#{object}"
 								target="#{accountController.beanSelected}" />
@@ -88,17 +89,14 @@
             <p:panelGrid columns="2" columnClasses="value"
 							style="width:300px">
 
-							<h:outputText value="#{labels['model.person.id']}" />
-							<h:outputText value="#{object.id}" />
-
-							<h:outputText value="#{labels['model.person.name']}" />
-							<h:outputText value="#{object.name}" />
-
-							<h:outputText value="#{labels['model.person.firstName']}" />
-							<h:outputText value="#{object.firstName}" />
-
 							<h:outputText value="#{labels['model.customer.address']}" />
 							<h:outputText value="#{object.address}" />
+
+							<h:outputText value="#{labels['model.customer.zipCode']}" />
+							<h:outputText value="#{object.zipCode}" />
+
+							<h:outputText value="#{labels['model.customer.city']}" />
+							<h:outputText value="#{object.city}" />
 
 						</p:panelGrid>
 					</p:rowExpansion>
