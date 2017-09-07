@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.justjsf.proxibanque.model.Account;
 import org.justjsf.proxibanque.model.CheckingAccount;
 import org.justjsf.proxibanque.model.Customer;
 import org.justjsf.proxibanque.model.SavingAccount;
@@ -21,8 +22,8 @@ import org.springframework.stereotype.Component;
 
 @Component(value = "accountController")
 @ViewScoped
-public class AccountController implements Serializable{
-	
+public class AccountController implements Serializable {
+
 	private static final long serialVersionUID = -5592412249785230184L;
 
 	@Autowired
@@ -36,12 +37,21 @@ public class AccountController implements Serializable{
 	private LocalDateTime date;
 	private Double overdraft = -1000D;
 	private Double wageRate = 3.0D;
+	private Account debitAccount;
+	private Account creditAccount;
+	private double transferAmount;
+
+
 
 	@PostConstruct
 	public void init() {
 	}
 
-
+	
+	public void transfer() {
+		if(service.transfer(debitAccount, creditAccount, transferAmount)){notificationSuccess("Virement effectué");}
+		else {notificationSuccess("Erreur lors du virement");}
+	}
 	public void save() {
 		try {
 
@@ -116,65 +126,53 @@ public class AccountController implements Serializable{
 		this.beanSelected = beanSelected;
 	}
 
-
 	public CheckingAccount getCheckingAccount() {
 		return checkingAccount;
 	}
-
 
 	public void setCheckingAccount(CheckingAccount checkingAccount) {
 		this.checkingAccount = checkingAccount;
 	}
 
-
 	public Double getBalance() {
 		return balance;
 	}
-
 
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 
-
 	public LocalDateTime getDate() {
 		return date;
 	}
-
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
-
 	public Double getOverdraft() {
 		return overdraft;
 	}
 
-
 	public void setOverdraft(Double overdraft) {
 		this.overdraft = overdraft;
 	}
-	
+
 	public SavingAccount getSavingAccount() {
 		return savingAccount;
 	}
-
 
 	public void setSavingAccount(SavingAccount savingAccount) {
 		this.savingAccount = savingAccount;
 	}
 
-
 	public Double getWageRate() {
 		return wageRate;
 	}
 
-
 	public void setWageRate(Double wageRate) {
 		this.wageRate = wageRate;
 	}
-
 
 	public void setCheckingAccount() {
 		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
@@ -191,7 +189,8 @@ public class AccountController implements Serializable{
 				notificationError(e, "Add Checking Account error");
 			}
 		}
-}
+	}
+
 	public void setSavingAccount() {
 		if (this.beanSelected != null && this.beanSelected.getSavingAccount() == null) {
 			this.savingAccount = new SavingAccount();

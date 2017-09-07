@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.justjsf.proxibanque.dao.ICustomerDao;
+import org.justjsf.proxibanque.model.Account;
 import org.justjsf.proxibanque.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,18 +53,28 @@ public class ServiceImpl implements IService {
 		return audit;
 
 	}
-	
+
 	@Override
 	public List<Customer> getWealthy() throws Exception {
 		List<Customer> customers = customerDao.findAll();
 		List<Customer> wealthy = new ArrayList<>();
 		for (Customer customer : customers) {
-			if (customer.getCheckingAccount().getBalance() >50000
+			if (customer.getCheckingAccount().getBalance() > 50000
 					|| customer.getCheckingAccount().getBalance() > 50000) {
 				wealthy.add(customer);
 			}
 		}
 		return wealthy;
+	}
 
+	@Override
+	public boolean transfer(Account debitAccount, Account creditAccount, double transferAmount) {
+		if (debitAccount.getBalance() - transferAmount < -1000 || transferAmount < 0) {
+			return false;
+		} else {
+			debitAccount.setBalance(debitAccount.getBalance() - transferAmount);
+			creditAccount.setBalance(creditAccount.getBalance() + transferAmount);
+			return true;
+		}
 	}
 }

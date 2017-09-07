@@ -2,6 +2,7 @@ package org.justjsf.proxibanque.service;
 
 import java.util.List;
 
+import org.justjsf.proxibanque.model.Account;
 import org.justjsf.proxibanque.model.Customer;
 
 public interface IService {
@@ -19,5 +20,7 @@ public interface IService {
 	List<Customer> getAudit() throws Exception;
 
 	List<Customer> getWealthy() throws Exception;
+
+	boolean transfer(Account debitAccount, Account creditAccount, double transferAmount);
 
 }
