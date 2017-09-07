@@ -74,8 +74,8 @@ public class CustomerController implements Serializable {
 			e.printStackTrace();
 		}
 
-		pieModel2.set("Comptes ok", listSelected.size()-listAudit.size());
-		pieModel2.set("Comptes ko", listAudit.size());
+		pieModel2.set("Clients ok", listSelected.size()-listAudit.size());
+		pieModel2.set("Découvert important", listAudit.size());
 
 	}
 
