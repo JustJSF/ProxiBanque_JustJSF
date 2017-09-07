@@ -53,8 +53,7 @@
 
 						<p:inputText id="login" value="#{advisorController.bean.login}"
 							required="true" label="#{labels['model.advisor.login']}"
-							requiredMessage="#{labels['new.login']}"
-							validatorMessage="#{labels['new.invalidLogin']}" />
+							requiredMessage="#{labels['new.login']}" />
 
 						<!-- Champ mot de passe -->
 						<h:outputText value="#{labels['model.advisor.password']}"
@@ -63,7 +62,7 @@
 						<p:password id="password"
 							value="#{advisorController.bean.password}" required="true"
 							label="#{labels['model.advisor.password']}"
-							requiredMessage="Required" />
+							requiredMessage="#{labels['new.password']}" />
 						<p:outputPanel layout="block" style="text-align:center">
 							<br />
 							<br />
