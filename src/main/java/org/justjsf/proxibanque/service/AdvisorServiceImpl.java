@@ -8,7 +8,12 @@ import org.justjsf.proxibanque.dao.IAdvisorDao;
 import org.justjsf.proxibanque.model.Advisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * Cette classe est responsable de la modélisation du service de l'application pour tout ce qui a trait aux fonctionnalités proposé au Conseiller.
+ * 
+ * @author JustJSF
+ *
+ */
 @Service
 public class AdvisorServiceImpl implements IAdvisorService {
 

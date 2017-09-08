@@ -4,6 +4,12 @@ import java.util.List;
 
 import org.justjsf.proxibanque.model.Advisor;
 
+/**
+ * Cette Interface résume les méthodes qui peuvent être utilisé par la couche Présentation pour les services fournis au Conseiller
+ * 
+ * @author JustJSF
+ *
+ */
 public interface IAdvisorService {
 
 	void persist(Advisor advisor) throws Exception;

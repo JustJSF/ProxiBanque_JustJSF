@@ -7,6 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+/**
+ * Cette classe sert de controlleur pour les vues permettant de changer la langue de l'utilisateur
+ * 
+ * @author JustJSF
+ *
+ */
 @ManagedBean(name="languageController")
 @SessionScoped
 public class LanguageController {

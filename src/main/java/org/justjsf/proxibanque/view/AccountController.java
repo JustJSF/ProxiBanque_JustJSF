@@ -20,6 +20,12 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Cette classe sert de controlleur pour les vues permettant d'afficher un client et de lui ajouter des Comptes.
+ * 
+ * @author JustJSF
+ *
+ */
 @Component(value = "accountController")
 @ViewScoped
 public class AccountController implements Serializable {
@@ -41,6 +47,42 @@ public class AccountController implements Serializable {
 	private Account creditAccount;
 	private double transferAmount;
 
+
+
+	public void setCheckingAccount() {
+		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
+			this.checkingAccount = new CheckingAccount();
+			this.checkingAccount.setBalance(this.balance);
+			this.checkingAccount.setOverdraft(this.overdraft);
+			this.checkingAccount.setDate(LocalDateTime.now());
+			this.beanSelected.setCheckingAccount(this.checkingAccount);
+			this.balance = 0.0D;
+			this.overdraft = -1000D;
+			try {
+				service.merge(this.beanSelected);
+			} catch (Exception e) {
+				notificationError(e, "Add Checking Account error");
+			}
+		}
+	}
+
+
+	public void setSavingAccount() {
+		if (this.beanSelected != null && this.beanSelected.getSavingAccount() == null) {
+			this.savingAccount = new SavingAccount();
+			this.savingAccount.setBalance(this.balance);
+			this.savingAccount.setWageRate(this.wageRate);
+			this.savingAccount.setDate(LocalDateTime.now());
+			this.beanSelected.setSavingAccount(this.savingAccount);
+			this.balance = 0.0D;
+			this.wageRate = 3.0D;
+			try {
+				service.merge(this.beanSelected);
+			} catch (Exception e) {
+				notificationError(e, "Add Saving Account error");
+			}
+		}
+	}
 
 
 	@PostConstruct
@@ -172,40 +214,6 @@ public class AccountController implements Serializable {
 
 	public void setWageRate(Double wageRate) {
 		this.wageRate = wageRate;
-	}
-
-	public void setCheckingAccount() {
-		if (this.beanSelected != null && this.beanSelected.getCheckingAccount() == null) {
-			this.checkingAccount = new CheckingAccount();
-			this.checkingAccount.setBalance(this.balance);
-			this.checkingAccount.setOverdraft(this.overdraft);
-			this.checkingAccount.setDate(LocalDateTime.now());
-			this.beanSelected.setCheckingAccount(this.checkingAccount);
-			this.balance = 0.0D;
-			this.overdraft = -1000D;
-			try {
-				service.merge(this.beanSelected);
-			} catch (Exception e) {
-				notificationError(e, "Add Checking Account error");
-			}
-		}
-	}
-
-	public void setSavingAccount() {
-		if (this.beanSelected != null && this.beanSelected.getSavingAccount() == null) {
-			this.savingAccount = new SavingAccount();
-			this.savingAccount.setBalance(this.balance);
-			this.savingAccount.setWageRate(this.wageRate);
-			this.savingAccount.setDate(LocalDateTime.now());
-			this.beanSelected.setSavingAccount(this.savingAccount);
-			this.balance = 0.0D;
-			this.wageRate = 3.0D;
-			try {
-				service.merge(this.beanSelected);
-			} catch (Exception e) {
-				notificationError(e, "Add Saving Account error");
-			}
-		}
 	}
 
 }

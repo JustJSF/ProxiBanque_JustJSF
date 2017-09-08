@@ -9,6 +9,12 @@ import org.justjsf.proxibanque.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Cette classe est responsable de la modélisation du service de l'application pour tout ce qui a trait aux fonctionnalités proposé au Gérant.
+ * 
+ * @author adminl
+ *
+ */
 @Service
 public class ServiceImpl implements IService {
 

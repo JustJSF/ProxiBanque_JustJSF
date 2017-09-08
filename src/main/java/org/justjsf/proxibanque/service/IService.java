@@ -1,10 +1,15 @@
 package org.justjsf.proxibanque.service;
 
 import java.util.List;
-
 import org.justjsf.proxibanque.model.Account;
 import org.justjsf.proxibanque.model.Customer;
 
+/**
+ * Cette Interface résume les méthodes qui peuvent être utilisé par la couche Présentation pour les services fournis au Gérant
+ * 
+ * @author JustJSF
+ *
+ */
 public interface IService {
 
 	void persist(Customer customer) throws Exception;

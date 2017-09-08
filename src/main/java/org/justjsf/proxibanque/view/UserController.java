@@ -11,7 +11,12 @@ import org.justjsf.proxibanque.model.Advisor;
 import org.justjsf.proxibanque.model.Advisor.Role;
 
 
-
+/**
+ * Cette classe sert de controlleur pour les vues permettant l'authentification des utilisateurs de l'application
+ *  
+ * @author JustJSF
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class UserController {

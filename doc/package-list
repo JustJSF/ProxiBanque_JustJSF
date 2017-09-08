@@ -1,0 +1,5 @@
+org.justjsf.proxibanque.dao
+org.justjsf.proxibanque.dao.impl
+org.justjsf.proxibanque.model
+org.justjsf.proxibanque.service
+org.justjsf.proxibanque.view

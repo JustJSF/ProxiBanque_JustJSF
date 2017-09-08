@@ -18,6 +18,12 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Cette classe sert de controlleur pour les vues permettant d'afficher et d'éditer un Conseiller
+ * 
+ * @author JustJSF
+ *
+ */
 @Component(value = "advisorController")
 @ViewScoped
 public class AdvisorController implements Serializable {
