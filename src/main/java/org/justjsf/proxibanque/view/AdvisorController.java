@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Cette classe sert de controlleur pour les vues permettant d'afficher et d'éditer un Conseiller
+ * Cette classe sert de controleur pour les vues permettant d'afficher et d'éditer un Conseiller
  * 
  * @author JustJSF
  *

@@ -12,7 +12,7 @@ import org.justjsf.proxibanque.model.Advisor.Role;
 
 
 /**
- * Cette classe sert de controlleur pour les vues permettant l'authentification des utilisateurs de l'application
+ * Cette classe sert de controleur pour les vues permettant l'authentification des utilisateurs de l'application
  *  
  * @author JustJSF
  *
@@ -46,13 +46,6 @@ public class UserController {
 			return "/homeD.xhtml?faces-redirect=true";
 		}
 		return "loginError.xhtml";
-//	if("director".equalsIgnoreCase(login)&&"director".equalsIgnoreCase(password)) {
-//		return "homeD.xhtml";
-//		}
-//	if("advisor".equalsIgnoreCase(login)&&"advisor".equalsIgnoreCase(password)) {
-//		return "home.xhtml";
-//		}
-//	return "login.xhtml";
 	}
 
 

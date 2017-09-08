@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
- * Cette classe sert de controlleur pour les vues permettant de changer la langue de l'utilisateur
+ * Cette classe sert de controleur pour les vues permettant de changer la langue de l'utilisateur
  * 
  * @author JustJSF
  *

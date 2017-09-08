@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Cette classe sert de controlleur pour les vues permettant d'afficher un client et de lui ajouter des Comptes.
+ * Cette classe sert de controleur pour les vues permettant d'afficher un client et de lui ajouter des Comptes.
  * 
  * @author JustJSF
  *

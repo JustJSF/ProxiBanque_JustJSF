@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Cette classe sert de controlleur pour les vues permettant d'afficher et d'éditer un Client
+ * Cette classe sert de controleur pour les vues permettant d'afficher et d'éditer un Client
  * 
  * @author JustJSF
  *
